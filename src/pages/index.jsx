@@ -4,8 +4,11 @@ import Button from "../atoms/button";
 import useGet from "../ions/hooks/fetch/get";
 import Layout from "../organisms/layout";
 
+console.log(process.env);
 const Page = () => {
-	const { data, loading, error } = useGet("/api/hello.json");
+	const { data, loading, error } = useGet(
+		`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_SPOONACULAR_API_KEY}`
+	);
 
 	return (
 		<Layout>
