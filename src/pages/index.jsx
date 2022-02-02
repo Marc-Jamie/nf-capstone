@@ -1,4 +1,4 @@
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 import React from "react";
 import Button from "../atoms/button";
 import useGet from "../ions/hooks/fetch/get";
@@ -21,6 +21,7 @@ const Page = () => {
 					<code>{JSON.stringify(data, null, 4)}</code>
 				</pre>
 			)}
+
 			<Button>Click me</Button>
 		</Layout>
 	);
