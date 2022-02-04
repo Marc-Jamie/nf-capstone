@@ -5,11 +5,7 @@
     "browser": true,
     "jest/globals": true
   },
-  "extends": [
-    "eslint:recommended",
-    "eslint-config-prettier",
-    "eslint-config-xo-react"
-  ],
+  "extends": ["eslint:recommended", "eslint-config-prettier", "eslint-config-xo-react"],
   "parserOptions": {
     "ecmaVersion": 2021,
     "sourceType": "module"
@@ -22,11 +18,14 @@
   ],
   "rules": {
     "react/prop-types": 0,
-    "react/jsx-tag-spacing": [0, {
-      "closingSlash": "never",
-      "beforeSelfClosing": "always",
-      "afterOpening": "never",
-      "beforeClosing": "allow"
-    }]
+    "react/jsx-tag-spacing": [
+      0,
+      {
+        "closingSlash": "never",
+        "beforeSelfClosing": "always",
+        "afterOpening": "never",
+        "beforeClosing": "allow"
+      }
+    ]
   }
 }
