@@ -3,9 +3,11 @@ import RecipeCard from "./Card";
 import useGet from "../ions/hooks/fetch/get";
 
 const RecipeReviewCard = () => {
-	const { data } = useGet(
-		`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_SPOONACULAR_API_KEY}`
+	const { data, loading, error } = useGet(
+		"/api/dummy.json"
+		// `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_SPOONACULAR_API_KEY}`
 	);
+	console.log(data, loading, error);
 	return (
 		<div>
 			{data?.results.map(recipe => {
