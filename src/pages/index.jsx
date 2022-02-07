@@ -6,9 +6,9 @@ import RecipeReviewCard from "../molecules/Cards";
 
 console.log(process.env);
 const Page = () => {
-	const { data, loading, error } = useGet(
-		`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_SPOONACULAR_API_KEY}`
-	);
+	// const { data, loading, error } = useGet(
+	// 	`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_SPOONACULAR_API_KEY}`
+	// );
 
 	return (
 		<Layout>
