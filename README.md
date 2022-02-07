@@ -4,13 +4,13 @@ This is a template for a React.js app.
 
 It uses the following tools/libraries:
 
-* [Storybook](https://storybook.js.org/)
-* [Cypress](https://cypress.io/)
-* [Jest](https://jestjs.io/)
-* [Commitlint](https://commitlint.js.org/)
-* [Stylelint](https://stylelint.io/)
-* [Eslint](https://eslint.org/)
-* [Prettier](https://prettier.io/)
+- [Storybook](https://storybook.js.org/)
+- [Cypress](https://cypress.io/)
+- [Jest](https://jestjs.io/)
+- [Commitlint](https://commitlint.js.org/)
+- [Stylelint](https://stylelint.io/)
+- [Eslint](https://eslint.org/)
+- [Prettier](https://prettier.io/)
 
 ## Getting started
 
@@ -25,7 +25,6 @@ npm run dev
 ```shell
 npm run storybook
 ```
-
 
 ## Atomic design
 
@@ -46,7 +45,6 @@ and [testing-library](https://testing-library.com/docs/react-testing-library/int
 
 We use commitlint to ensure conventional commit messages. You can read more about our decision in
 the [documentation](./docs/COMMITS.md).
-
 
 ## Commands
 
@@ -126,3 +124,13 @@ git commit README.md -m "this is a dirty commit" --no-verify
 # Skipping linters
 git push --no-verify
 ```
+
+## Data fetching
+
+1. complex search
+
+- title
+- id
+- image
+
+2.
