@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import useStore from "./useStore";
 
-const Fridge = () => {
+const ShoppingList = () => {
 	const [value, setValue] = useState("");
 	const ingredients = useStore(state => state.ingredients);
 	const addIngredient = useStore(state => state.addIngredient);
@@ -9,6 +9,7 @@ const Fridge = () => {
 	const editIngredient = useStore(state => state.editIngredient);
 	const setEditValue = useStore(state => state.setEditValue);
 	const saveEditedIngredient = useStore(state => state.saveEditedIngredient);
+	const checkIngredient = useStore(state => state.checkIngredient);
 
 	return (
 		<>
@@ -24,7 +25,7 @@ const Fridge = () => {
 			>
 				<input
 					type="text"
-					placeholder="ingredient"
+					placeholder="item"
 					value={value}
 					onChange={event_ => {
 						setValue(event_.target.value);
@@ -36,6 +37,14 @@ const Fridge = () => {
 				{ingredients.map((ingredient, index) => {
 					return (
 						<li key={ingredient.id}>
+							<input
+								type="checkbox"
+								checked={ingredient.isChecked ? ingredient.isChecked : false}
+								onChange={() => {
+									checkIngredient(index);
+								}}
+							/>
+
 							{ingredient.edit ? (
 								<input
 									type="text"
@@ -45,7 +54,15 @@ const Fridge = () => {
 									}}
 								/>
 							) : (
-								<span>{ingredient.name}</span>
+								<span
+									style={
+										ingredient.isChecked
+											? { color: "green", textDecoration: "line-through" }
+											: null
+									}
+								>
+									{ingredient.name}
+								</span>
 							)}
 							<button
 								type="button"
@@ -75,4 +92,4 @@ const Fridge = () => {
 		</>
 	);
 };
-export default Fridge;
+export default ShoppingList;

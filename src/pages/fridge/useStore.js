@@ -45,9 +45,17 @@ const useStore = create(
 						})
 					);
 				},
+				checkIngredient: index => {
+					set(
+						produce(state => {
+							state.ingredients[index].isChecked =
+								!state.ingredients[index].isChecked;
+						})
+					);
+				},
 			};
 		},
-		{ name: "zustand" }
+		{ name: "fridge" }
 	)
 );
 

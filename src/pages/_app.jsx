@@ -5,6 +5,8 @@ import Home from "./";
 import About from "./about";
 import { globalStyle } from "../ions/styles";
 import Fridge from "./fridge";
+import ShoppingList from "./shoppinglist";
+
 const App = () => {
 	return (
 		<>
@@ -15,6 +17,7 @@ const App = () => {
 						<Route index element={<Home />} />
 						<Route path="about/" element={<About />} />
 						<Route path="fridge/" element={<Fridge />} />
+						<Route path="shoppinglist/" element={<ShoppingList />} />
 					</Route>
 				</Routes>
 			</BrowserRouter>
