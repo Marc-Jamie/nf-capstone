@@ -46,11 +46,14 @@ const RecipeCard = ({ id, title, image }) => {
 					)}
 				</CardContent>
 				{data && (
-					<ul>
-						{data.extendedIngredients.map(ingredient => {
-							return <li key={ingredient.id}>{ingredient.name}</li>;
-						})}
-					</ul>
+					<Typography paragraph>
+						<ul>
+							You need:
+							{data.extendedIngredients.map(ingredient => {
+								return <li key={ingredient.id}>{ingredient.name}</li>;
+							})}
+						</ul>
+					</Typography>
 				)}
 			</Collapse>
 		</Card>
