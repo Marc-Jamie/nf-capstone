@@ -26,7 +26,9 @@ const RecipeCard = ({ id, title, image }) => {
 
 	return (
 		<Card sx={{ maxWidth: 345 }}>
-			<CardHeader title={title} />
+			{data && (
+				<CardHeader title={title} subheader={`ready in: ${data.readyInMinutes} minutes`} />
+			)}
 			<CardMedia component="img" height="140" image={image} alt={title} />
 
 			<ExpandMore
@@ -49,8 +51,12 @@ const RecipeCard = ({ id, title, image }) => {
 					<Typography paragraph>
 						<ul>
 							You need:
-							{data.extendedIngredients.map(ingredient => {
-								return <li key={ingredient.id}>{ingredient.name}</li>;
+							{data.extendedIngredients?.map(ingredient => {
+								return (
+									<li key={ingredient.id}>
+										{ingredient.amount} {ingredient.unit} {ingredient.name}
+									</li>
+								);
 							})}
 						</ul>
 					</Typography>
