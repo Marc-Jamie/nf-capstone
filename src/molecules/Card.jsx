@@ -51,7 +51,7 @@ const RecipeCard = ({ id, title, image }) => {
 					<Typography paragraph>
 						<ul>
 							You need:
-							{data.extendedIngredients?.map(ingredient => {
+							{data.extendedIngredients.map(ingredient => {
 								return (
 									<li key={ingredient.id}>
 										{ingredient.amount} {ingredient.unit} {ingredient.name}
