@@ -3,7 +3,7 @@ import produce from "immer";
 import { persist } from "zustand/middleware";
 import { v4 as uuid } from "uuid";
 
-const useStore = create(
+const useShoppinglist = create(
 	persist(
 		set => {
 			return {
@@ -59,6 +59,6 @@ const useStore = create(
 	)
 );
 
-export default useStore;
+export default useShoppinglist;
 
 //persist(alles was in create ist, {name: "currywurst"}) "create(persist())"

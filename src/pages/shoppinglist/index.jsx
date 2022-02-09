@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import useStore from "./useStore";
+import useShoppinglist from "../../ions/store/useShoppinglist";
 
 const ShoppingList = () => {
 	const [value, setValue] = useState("");
-	const ingredients = useStore(state => state.ingredients);
-	const addIngredient = useStore(state => state.addIngredient);
-	const deleteIngredient = useStore(state => state.deleteIngredient);
-	const editIngredient = useStore(state => state.editIngredient);
-	const setEditValue = useStore(state => state.setEditValue);
-	const saveEditedIngredient = useStore(state => state.saveEditedIngredient);
-	const checkIngredient = useStore(state => state.checkIngredient);
+	const ingredients = useShoppinglist(state => state.ingredients);
+	const addIngredient = useShoppinglist(state => state.addIngredient);
+	const deleteIngredient = useShoppinglist(state => state.deleteIngredient);
+	const editIngredient = useShoppinglist(state => state.editIngredient);
+	const setEditValue = useShoppinglist(state => state.setEditValue);
+	const saveEditedIngredient = useShoppinglist(state => state.saveEditedIngredient);
+	const checkIngredient = useShoppinglist(state => state.checkIngredient);
 
 	return (
 		<>
