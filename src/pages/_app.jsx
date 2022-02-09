@@ -6,6 +6,7 @@ import About from "./about";
 import { globalStyle } from "../ions/styles";
 import Fridge from "./fridge";
 import ShoppingList from "./shoppinglist";
+import Recipe from "../molecules/recipe";
 
 const App = () => {
 	return (
@@ -18,6 +19,7 @@ const App = () => {
 						<Route path="about/" element={<About />} />
 						<Route path="fridge/" element={<Fridge />} />
 						<Route path="shoppinglist/" element={<ShoppingList />} />
+						<Route path="recipe/:id" element={<Recipe />} />
 					</Route>
 				</Routes>
 			</BrowserRouter>
