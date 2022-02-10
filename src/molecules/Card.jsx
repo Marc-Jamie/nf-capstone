@@ -12,7 +12,7 @@ import Collapse from "@mui/material/Collapse";
 
 const RecipeCard = ({ id, title, image }) => {
 	const { data } = useGet(
-		`https://api.spoonacular.com/recipes/${id}/information?apiKey=${process.env.REACT_APP_SPOONACULAR_API_KEY}`
+		`https://api.spoonacular.com/recipes/${id}/information?apiKey=${process.env.NEXT_PUBLIC_SPOONACULAR_API_KEY}`
 	);
 	useEffect(() => {
 		console.log(data);
