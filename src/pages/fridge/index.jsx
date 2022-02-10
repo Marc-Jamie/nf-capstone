@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import useStore from "./useStore";
+import useFridge from "../../ions/store/useFridge";
 
 const Fridge = () => {
 	const [value, setValue] = useState("");
-	const ingredients = useStore(state => state.ingredients);
-	const addIngredient = useStore(state => state.addIngredient);
-	const deleteIngredient = useStore(state => state.deleteIngredient);
-	const editIngredient = useStore(state => state.editIngredient);
-	const setEditValue = useStore(state => state.setEditValue);
-	const saveEditedIngredient = useStore(state => state.saveEditedIngredient);
+	const ingredients = useFridge(state => state.ingredients);
+	const addIngredient = useFridge(state => state.addIngredient);
+	const deleteIngredient = useFridge(state => state.deleteIngredient);
+	const editIngredient = useFridge(state => state.editIngredient);
+	const setEditValue = useFridge(state => state.setEditValue);
+	const saveEditedIngredient = useFridge(state => state.saveEditedIngredient);
 
 	return (
 		<>
