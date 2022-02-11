@@ -13,17 +13,15 @@ const Recipe = () => {
 		query: { id },
 	} = useRouter();
 
-	const { data } = useGet(
-		`https://api.spoonacular.com/recipes/${id}/information?apiKey=${process.env.NEXT_PUBLIC_SPOONACULAR_API_KEY}`
-	);
+	const { data } = useGet(`/api/spoonacular/recipes/${id}/information/`);
 
 	const { data: instructionsData } = useGet(
-		`https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=${process.env.NEXT_PUBLIC_SPOONACULAR_API_KEY}`
+		`/api/spoonacular/recipes/${id}/analyzedInstructions/`
 	);
 	if (!data || !instructionsData) {
 		return <div>loading... </div>;
 	}
-	console.log(instructionsData);
+	console.log(data);
 	return (
 		<Card>
 			<CardHeader title="title" />
@@ -37,7 +35,7 @@ const Recipe = () => {
 			</Stack>
 
 			<ul>
-				{data.extendedIngredients.map(ingredient => {
+				{data.extendedIngredients?.map(ingredient => {
 					return <li key={ingredient.id}>{ingredient.name}</li>;
 				})}
 			</ul>
