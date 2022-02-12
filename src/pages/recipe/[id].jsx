@@ -21,6 +21,7 @@ const Recipe = () => {
 	if (!data || !instructionsData) {
 		return <div>loading... </div>;
 	}
+
 	return (
 		<Card>
 			<CardHeader title="title" />
