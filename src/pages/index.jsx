@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet";
+import { HelmetProvider, Helmet } from "react-helmet-async";
 import React from "react";
 // import useGet from "../ions/hooks/fetch/get";
 import Layout from "../organisms/layout";
@@ -12,10 +12,12 @@ const Page = () => {
 
 	return (
 		<Layout>
-			<Helmet>
-				<title key="title">My Project</title>
-				<meta key="description" name="description" content="This is my project" />
-			</Helmet>
+			<HelmetProvider>
+				<Helmet>
+					<title key="title">My Project</title>
+					<meta key="description" name="description" content="This is my project" />
+				</Helmet>
+			</HelmetProvider>
 			<h1>Recipes</h1>
 			<RecipeReviewCard />
 		</Layout>

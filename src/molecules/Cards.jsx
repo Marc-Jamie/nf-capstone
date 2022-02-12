@@ -4,14 +4,14 @@ import useGet from "../ions/hooks/fetch/get";
 
 const RecipeReviewCard = () => {
 	const { data, loading, error } = useGet(
-		"/api/dummy.json"
+		"/api/dummy"
 		// `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_SPOONACULAR_API_KEY}`
 	);
 	console.log(data, loading, error);
 	return (
 		<div>
 			{data?.results.map(recipe => {
-				return <RecipeCard key={recipe.id} {...recipe} />;
+				return <RecipeCard key={recipe.id} recipe={recipe} />;
 			})}
 		</div>
 	);
