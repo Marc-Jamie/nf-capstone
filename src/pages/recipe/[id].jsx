@@ -21,7 +21,6 @@ const Recipe = () => {
 	if (!data || !instructionsData) {
 		return <div>loading... </div>;
 	}
-	console.log(data.extendedIngredients);
 	return (
 		<Card>
 			<CardHeader title="title" />
