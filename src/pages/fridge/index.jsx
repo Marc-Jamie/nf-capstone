@@ -1,5 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import useFridge from "../../ions/store/useFridge";
+import Box from "@mui/material/Box";
+import Autocomplete from "@mui/material/Autocomplete";
+import TextField from "@mui/material/TextField";
+import { useDebounce } from "use-debounce";
+import axios from "axios";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
+import ListItemAvatar from "@mui/material/ListItemAvatar";
+import Checkbox from "@mui/material/Checkbox";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
 
 const Fridge = () => {
 	const [value, setValue] = useState("");
@@ -10,9 +23,102 @@ const Fridge = () => {
 	const setEditValue = useFridge(state => state.setEditValue);
 	const saveEditedIngredient = useFridge(state => state.saveEditedIngredient);
 
+	const [results, setResults] = useState([]);
+	const [valueA, setValueA] = useState(results[0]);
+	const [inputValue, setInputValue] = useState("");
+	const [debouncedInputValue] = useDebounce(inputValue, 1_000);
+
+	useEffect(() => {
+		axios
+			.get(
+				`/api/spoonacular-cache/food/ingredients/autocomplete?metaInformation=true&query=${debouncedInputValue}`
+			)
+			.then(response => {
+				setResults(response.data.map(({ name }) => name));
+			});
+	}, [debouncedInputValue]);
+
+	//This is for the list
+	const [checked, setChecked] = useState([1]);
+
+	const handleToggle = value => () => {
+		const currentIndex = checked.indexOf(value);
+		const newChecked = [...checked];
+
+		if (currentIndex === -1) {
+			newChecked.push(value);
+		} else {
+			newChecked.splice(currentIndex, 1);
+		}
+
+		setChecked(newChecked);
+	};
+
 	return (
 		<>
-			<form
+			<Box>
+				<Autocomplete
+					value={valueA}
+					inputValue={inputValue}
+					options={results}
+					sx={{ width: 300 }}
+					renderInput={params => <TextField {...params} label="Controllable" />}
+					onChange={(event, newValue) => {
+						setValueA(newValue);
+					}}
+					onInputChange={(event, newInputValue) => {
+						setInputValue(newInputValue);
+					}}
+				/>
+			</Box>
+			<Button
+				variant="contained"
+				onClick={() => {
+					return (
+						<List
+							dense
+							sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
+						>
+							{results.map(result => {
+								const labelId = `checkbox-list-secondary-label-${value}`;
+								return (
+									<ListItem
+										key={result.id}
+										secondaryAction={
+											<Checkbox
+												edge="end"
+												onChange={() => {
+													checkIngredient(result.id);
+												}}
+												checked={
+													result.isChecked ? result.isChecked : false
+												}
+												inputProps={{ "aria-labelledby": labelId }}
+											/>
+										}
+										disablePadding
+									>
+										<ListItemButton>
+											<ListItemAvatar>
+												<Avatar alt={result.name} src={result.image} />
+											</ListItemAvatar>
+											<ListItemText
+												id={labelId}
+												primary={` ${result.name}`}
+											/>
+										</ListItemButton>
+									</ListItem>
+								);
+							})}
+						</List>
+					);
+				}}
+			>
+				Send
+			</Button>
+			{/* begin of the list */}
+
+			{/* <form
 				onSubmit={event_ => {
 					event_.preventDefault();
 
@@ -71,7 +177,7 @@ const Fridge = () => {
 						</li>
 					);
 				})}
-			</ul>
+			</ul> */}
 		</>
 	);
 };

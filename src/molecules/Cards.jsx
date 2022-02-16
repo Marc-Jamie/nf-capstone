@@ -7,7 +7,6 @@ const RecipeReviewCard = () => {
 		"/api/dummy"
 		// `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_SPOONACULAR_API_KEY}`
 	);
-	console.log(data, loading, error);
 	return (
 		<div>
 			{data?.results.map(recipe => {

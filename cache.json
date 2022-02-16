@@ -1,8 +1,1264 @@
 {
-  "url1": {
-    "data": "request.data"
-  },
-  "url2": {
-    "data": "request.data"
-  }
+    "https://api.spoonacular.com/recipes/complexSearch?apiKey=bc8a88bb37dd49c3a640bff970e7d9f1": {
+        "results": [
+            {
+                "id": 716426,
+                "title": "Cauliflower, Brown Rice, and Vegetable Fried Rice",
+                "image": "https://spoonacular.com/recipeImages/716426-312x231.jpg",
+                "imageType": "jpg"
+            },
+            {
+                "id": 715594,
+                "title": "Homemade Garlic and Basil French Fries",
+                "image": "https://spoonacular.com/recipeImages/715594-312x231.jpg",
+                "imageType": "jpg"
+            },
+            {
+                "id": 715497,
+                "title": "Berry Banana Breakfast Smoothie",
+                "image": "https://spoonacular.com/recipeImages/715497-312x231.jpg",
+                "imageType": "jpg"
+            },
+            {
+                "id": 644387,
+                "title": "Garlicky Kale",
+                "image": "https://spoonacular.com/recipeImages/644387-312x231.jpg",
+                "imageType": "jpg"
+            },
+            {
+                "id": 716268,
+                "title": "African Chicken Peanut Stew",
+                "image": "https://spoonacular.com/recipeImages/716268-312x231.jpg",
+                "imageType": "jpg"
+            },
+            {
+                "id": 716381,
+                "title": "Nigerian Snail Stew",
+                "image": "https://spoonacular.com/recipeImages/716381-312x231.jpg",
+                "imageType": "jpg"
+            },
+            {
+                "id": 782601,
+                "title": "Red Kidney Bean Jambalaya",
+                "image": "https://spoonacular.com/recipeImages/782601-312x231.jpg",
+                "imageType": "jpg"
+            },
+            {
+                "id": 794349,
+                "title": "Broccoli and Chickpea Rice Salad",
+                "image": "https://spoonacular.com/recipeImages/794349-312x231.jpg",
+                "imageType": "jpg"
+            },
+            {
+                "id": 715446,
+                "title": "Slow Cooker Beef Stew",
+                "image": "https://spoonacular.com/recipeImages/715446-312x231.jpg",
+                "imageType": "jpg"
+            },
+            {
+                "id": 715415,
+                "title": "Red Lentil Soup with Chicken and Turnips",
+                "image": "https://spoonacular.com/recipeImages/715415-312x231.jpg",
+                "imageType": "jpg"
+            }
+        ],
+        "offset": 0,
+        "number": 10,
+        "totalResults": 5226
+    },
+    "https://api.spoonacular.com/recipes/716426/information?apiKey=bc8a88bb37dd49c3a640bff970e7d9f1": {
+        "vegetarian": true,
+        "vegan": true,
+        "glutenFree": true,
+        "dairyFree": true,
+        "veryHealthy": true,
+        "cheap": false,
+        "veryPopular": true,
+        "sustainable": false,
+        "weightWatcherSmartPoints": 4,
+        "gaps": "no",
+        "lowFodmap": false,
+        "aggregateLikes": 3689,
+        "spoonacularScore": 100,
+        "healthScore": 76,
+        "creditsText": "Full Belly Sisters",
+        "license": "CC BY-SA 3.0",
+        "sourceName": "Full Belly Sisters",
+        "pricePerServing": 112.39,
+        "extendedIngredients": [
+            {
+                "id": 11090,
+                "aisle": "Produce",
+                "image": "broccoli.jpg",
+                "consistency": "solid",
+                "name": "broccoli",
+                "nameClean": "broccoli",
+                "original": "2 cups cooked broccoli, chopped small",
+                "originalName": "cooked broccoli, chopped small",
+                "amount": 2,
+                "unit": "cups",
+                "meta": [
+                    "cooked",
+                    "chopped"
+                ],
+                "measures": {
+                    "us": {
+                        "amount": 2,
+                        "unitShort": "cups",
+                        "unitLong": "cups"
+                    },
+                    "metric": {
+                        "amount": 473.176,
+                        "unitShort": "ml",
+                        "unitLong": "milliliters"
+                    }
+                }
+            },
+            {
+                "id": 11135,
+                "aisle": "Produce",
+                "image": "cauliflower.jpg",
+                "consistency": "solid",
+                "name": "cauliflower",
+                "nameClean": "cauliflower",
+                "original": "1 head of cauliflower, raw",
+                "originalName": "cauliflower, raw",
+                "amount": 1,
+                "unit": "head",
+                "meta": [
+                    "raw"
+                ],
+                "measures": {
+                    "us": {
+                        "amount": 1,
+                        "unitShort": "head",
+                        "unitLong": "head"
+                    },
+                    "metric": {
+                        "amount": 1,
+                        "unitShort": "head",
+                        "unitLong": "head"
+                    }
+                }
+            },
+            {
+                "id": 4047,
+                "aisle": "Health Foods;Baking",
+                "image": "oil-coconut.jpg",
+                "consistency": "liquid",
+                "name": "coconut oil",
+                "nameClean": "coconut oil",
+                "original": "1 + 1 T coconut oil or butter",
+                "originalName": "1 T coconut oil or butter",
+                "amount": 1,
+                "unit": "",
+                "meta": [],
+                "measures": {
+                    "us": {
+                        "amount": 1,
+                        "unitShort": "",
+                        "unitLong": ""
+                    },
+                    "metric": {
+                        "amount": 1,
+                        "unitShort": "",
+                        "unitLong": ""
+                    }
+                }
+            },
+            {
+                "id": 20041,
+                "aisle": "Pasta and Rice",
+                "image": "rice-brown-cooked.png",
+                "consistency": "solid",
+                "name": "cooked brown rice",
+                "nameClean": "cooked brown rice",
+                "original": "3 cups of cooked brown rice, cold",
+                "originalName": "cooked brown rice, cold",
+                "amount": 3,
+                "unit": "cups",
+                "meta": [
+                    "cold",
+                    "cooked"
+                ],
+                "measures": {
+                    "us": {
+                        "amount": 3,
+                        "unitShort": "cups",
+                        "unitLong": "cups"
+                    },
+                    "metric": {
+                        "amount": 709.764,
+                        "unitShort": "ml",
+                        "unitLong": "milliliters"
+                    }
+                }
+            },
+            {
+                "id": 11215,
+                "aisle": "Produce",
+                "image": "garlic.png",
+                "consistency": "solid",
+                "name": "garlic",
+                "nameClean": "garlic",
+                "original": "5 cloves of garlic, chopped",
+                "originalName": "garlic, chopped",
+                "amount": 5,
+                "unit": "cloves",
+                "meta": [
+                    "chopped"
+                ],
+                "measures": {
+                    "us": {
+                        "amount": 5,
+                        "unitShort": "cloves",
+                        "unitLong": "cloves"
+                    },
+                    "metric": {
+                        "amount": 5,
+                        "unitShort": "cloves",
+                        "unitLong": "cloves"
+                    }
+                }
+            },
+            {
+                "id": 4517,
+                "aisle": "Oil, Vinegar, Salad Dressing",
+                "image": "vegetable-oil.jpg",
+                "consistency": "liquid",
+                "name": "grapeseed oil",
+                "nameClean": "grape seed oil",
+                "original": "1 + 1 T grapeseed oil",
+                "originalName": "1 T grapeseed oil",
+                "amount": 1,
+                "unit": "",
+                "meta": [],
+                "measures": {
+                    "us": {
+                        "amount": 1,
+                        "unitShort": "",
+                        "unitLong": ""
+                    },
+                    "metric": {
+                        "amount": 1,
+                        "unitShort": "",
+                        "unitLong": ""
+                    }
+                }
+            },
+            {
+                "id": 16424,
+                "aisle": "Ethnic Foods;Condiments",
+                "image": "soy-sauce.jpg",
+                "consistency": "liquid",
+                "name": "low sodium soy sauce",
+                "nameClean": "lower sodium soy sauce",
+                "original": "3T reduced-sodium soy sauce",
+                "originalName": "reduced-sodium soy sauce",
+                "amount": 3,
+                "unit": "T",
+                "meta": [
+                    "reduced-sodium"
+                ],
+                "measures": {
+                    "us": {
+                        "amount": 3,
+                        "unitShort": "Tbsps",
+                        "unitLong": "Tbsps"
+                    },
+                    "metric": {
+                        "amount": 3,
+                        "unitShort": "Tbsps",
+                        "unitLong": "Tbsps"
+                    }
+                }
+            },
+            {
+                "id": 11304,
+                "aisle": "Produce",
+                "image": "peas.jpg",
+                "consistency": "solid",
+                "name": "peas",
+                "nameClean": "petite peas",
+                "original": "1 cup frozen peas",
+                "originalName": "frozen peas",
+                "amount": 1,
+                "unit": "cup",
+                "meta": [
+                    "frozen"
+                ],
+                "measures": {
+                    "us": {
+                        "amount": 1,
+                        "unitShort": "cup",
+                        "unitLong": "cup"
+                    },
+                    "metric": {
+                        "amount": 236.588,
+                        "unitShort": "ml",
+                        "unitLong": "milliliters"
+                    }
+                }
+            },
+            {
+                "id": 2047,
+                "aisle": "Spices and Seasonings",
+                "image": "salt.jpg",
+                "consistency": "solid",
+                "name": "salt",
+                "nameClean": "salt",
+                "original": "salt, to taste",
+                "originalName": "salt, to taste",
+                "amount": 8,
+                "unit": "servings",
+                "meta": [
+                    "to taste"
+                ],
+                "measures": {
+                    "us": {
+                        "amount": 8,
+                        "unitShort": "servings",
+                        "unitLong": "servings"
+                    },
+                    "metric": {
+                        "amount": 8,
+                        "unitShort": "servings",
+                        "unitLong": "servings"
+                    }
+                }
+            },
+            {
+                "id": 11291,
+                "aisle": "Produce",
+                "image": "spring-onions.jpg",
+                "consistency": "solid",
+                "name": "scallion",
+                "nameClean": "spring onions",
+                "original": "additional chopped scallion tops for garnish",
+                "originalName": "additional chopped scallion tops for garnish",
+                "amount": 8,
+                "unit": "servings",
+                "meta": [
+                    "chopped",
+                    "for garnish"
+                ],
+                "measures": {
+                    "us": {
+                        "amount": 8,
+                        "unitShort": "servings",
+                        "unitLong": "servings"
+                    },
+                    "metric": {
+                        "amount": 8,
+                        "unitShort": "servings",
+                        "unitLong": "servings"
+                    }
+                }
+            },
+            {
+                "id": 11291,
+                "aisle": "Produce",
+                "image": "spring-onions.jpg",
+                "consistency": "solid",
+                "name": "scallions",
+                "nameClean": "spring onions",
+                "original": "7 scallions, chopped (keep white/light green ends separate from dark green tops)",
+                "originalName": "scallions, chopped (keep white/light green ends separate from dark green tops)",
+                "amount": 7,
+                "unit": "",
+                "meta": [
+                    "dark",
+                    "green",
+                    "chopped",
+                    "(keep white/light ends separate from tops)"
+                ],
+                "measures": {
+                    "us": {
+                        "amount": 7,
+                        "unitShort": "",
+                        "unitLong": ""
+                    },
+                    "metric": {
+                        "amount": 7,
+                        "unitShort": "",
+                        "unitLong": ""
+                    }
+                }
+            },
+            {
+                "id": 4058,
+                "aisle": "Ethnic Foods",
+                "image": "sesame-oil.png",
+                "consistency": "liquid",
+                "name": "sesame oil",
+                "nameClean": "sesame oil",
+                "original": "2t toasted sesame oil",
+                "originalName": "toasted sesame oil",
+                "amount": 2,
+                "unit": "t",
+                "meta": [
+                    "toasted"
+                ],
+                "measures": {
+                    "us": {
+                        "amount": 2,
+                        "unitShort": "tsps",
+                        "unitLong": "teaspoons"
+                    },
+                    "metric": {
+                        "amount": 2,
+                        "unitShort": "tsps",
+                        "unitLong": "teaspoons"
+                    }
+                }
+            },
+            {
+                "id": 12023,
+                "aisle": "Ethnic Foods;Spices and Seasonings",
+                "image": "sesame-seeds.png",
+                "consistency": "solid",
+                "name": "sesame seeds",
+                "nameClean": "sesame seeds",
+                "original": "toasted sesame seeds, optional",
+                "originalName": "toasted sesame seeds, optional",
+                "amount": 8,
+                "unit": "servings",
+                "meta": [
+                    "toasted"
+                ],
+                "measures": {
+                    "us": {
+                        "amount": 8,
+                        "unitShort": "servings",
+                        "unitLong": "servings"
+                    },
+                    "metric": {
+                        "amount": 8,
+                        "unitShort": "servings",
+                        "unitLong": "servings"
+                    }
+                }
+            }
+        ],
+        "id": 716426,
+        "title": "Cauliflower, Brown Rice, and Vegetable Fried Rice",
+        "readyInMinutes": 30,
+        "servings": 8,
+        "sourceUrl": "http://fullbellysisters.blogspot.com/2012/01/cauliflower-fried-rice-more-veggies.html",
+        "image": "https://spoonacular.com/recipeImages/716426-556x370.jpg",
+        "imageType": "jpg",
+        "summary": "Cauliflower, Brown Rice, and Vegetable Fried Rice might be a good recipe to expand your side dish recipe box. Watching your figure? This gluten free, dairy free, lacto ovo vegetarian, and vegan recipe has <b>192 calories</b>, <b>7g of protein</b>, and <b>6g of fat</b> per serving. For <b>$1.12 per serving</b>, this recipe <b>covers 19%</b> of your daily requirements of vitamins and minerals. This recipe serves 8. This recipe from fullbellysisters.blogspot.com has 3689 fans. This recipe is typical of Chinese cuisine. From preparation to the plate, this recipe takes about <b>30 minutes</b>. Head to the store and pick up peas, broccoli, salt, and a few other things to make it today. Overall, this recipe earns an <b>awesome spoonacular score of 100%</b>. Users who liked this recipe also liked <a href=\"https://spoonacular.com/recipes/vegetable-fried-brown-rice-36199\">Vegetable Fried Brown Rice</a>, <a href=\"https://spoonacular.com/recipes/vegetable-fried-cauliflower-rice-933261\">Vegetable Fried Cauliflower Rice</a>, and <a href=\"https://spoonacular.com/recipes/easy-vegetable-fried-brown-rice-with-egg-802042\">Easy Vegetable Fried Brown Rice with Egg</a>.",
+        "cuisines": [
+            "Chinese",
+            "Asian"
+        ],
+        "dishTypes": [
+            "side dish"
+        ],
+        "diets": [
+            "gluten free",
+            "dairy free",
+            "lacto ovo vegetarian",
+            "vegan"
+        ],
+        "occasions": [],
+        "winePairing": {
+            "pairedWines": [
+                "chenin blanc",
+                "gewurztraminer",
+                "riesling"
+            ],
+            "pairingText": "Chenin Blanc, Gewurztraminer, and Riesling are my top picks for Asian. The best wine for Asian food depends on the cuisine and dish - of course - but these acidic whites pair with a number of traditional meals, spicy or not. The Field Recordings Chenin Blanc with a 4.1 out of 5 star rating seems like a good match. It costs about 19 dollars per bottle.",
+            "productMatches": [
+                {
+                    "id": 459019,
+                    "title": "Field Recordings Chenin Blanc",
+                    "description": "Flavors of oyster shell, granny smith apples, chamomile and daffodil.",
+                    "price": "$18.99",
+                    "imageUrl": "https://spoonacular.com/productImages/459019-312x231.jpg",
+                    "averageRating": 0.82,
+                    "ratingCount": 14,
+                    "score": 0.7967441860465115,
+                    "link": "https://click.linksynergy.com/deeplink?id=*QCiIS6t4gA&mid=2025&murl=https%3A%2F%2Fwww.wine.com%2Fproduct%2Ffield-recordings-chenin-blanc-2016%2F348752"
+                }
+            ]
+        },
+        "instructions": "<ol><li><span></span>Remove the cauliflower's tough stem and reserve for another use. Using a food processor, pulse cauliflower florets until they resemble rice or couscous. You should end up with around four cups of \"cauliflower rice.\"</li><li>Heat 1T butter and 1T oil in a large skillet over medium heat. Add garlic and the white and light green pieces of scallion. Sauté about a minute.</li><li>Add the cauliflower to the pan. Stir to coat with oil, then spread out in pan and let sit; you want it cook a bit and to caramelize (get a bit brown), which will bring out the sweetness. After a couple of minutes, stir and spread out again.</li><li>Add cold rice (it separates easily, so it won't clump up during cooking), plus the additional grapeseed and coconut oil or butter. Raise heat to medium-high. Toss everything together and, again, spread the mixture out over the whole pan and press a bit into the bottom. Let it sit for about two minutes—so the rice can get toasted and a little crispy. Add the peas and broccoli and stir again. Drizzle soy sauce and toasted sesame oil over rice.</li><li>Cook for another minute or so and turn off heat. Add chopped scallion tops and toss.</li><li>I like to toast some sesame seeds in a dry pan; I sprinkle these and some more raw, chopped scallion over the top of the rice for added flavor and crunch.</li><li>Season to taste with salt and, if you'd like, more soy sauce. Keep in mind that if you're serving this with something salty and saucy (ie. teriyaki chicken) you may want to hold off on adding too much salt to the fried rice.</li></ol>",
+        "analyzedInstructions": [
+            {
+                "name": "",
+                "steps": [
+                    {
+                        "number": 1,
+                        "step": "Remove the cauliflower's tough stem and reserve for another use. Using a food processor, pulse cauliflower florets until they resemble rice or couscous. You should end up with around four cups of \"cauliflower rice.\"",
+                        "ingredients": [
+                            {
+                                "id": 10011135,
+                                "name": "cauliflower florets",
+                                "localizedName": "cauliflower florets",
+                                "image": "cauliflower.jpg"
+                            },
+                            {
+                                "id": 10111135,
+                                "name": "cauliflower rice",
+                                "localizedName": "cauliflower rice",
+                                "image": "cauliflower.jpg"
+                            },
+                            {
+                                "id": 11135,
+                                "name": "cauliflower",
+                                "localizedName": "cauliflower",
+                                "image": "cauliflower.jpg"
+                            },
+                            {
+                                "id": 20028,
+                                "name": "couscous",
+                                "localizedName": "couscous",
+                                "image": "couscous-cooked.jpg"
+                            },
+                            {
+                                "id": 20444,
+                                "name": "rice",
+                                "localizedName": "rice",
+                                "image": "uncooked-white-rice.png"
+                            }
+                        ],
+                        "equipment": [
+                            {
+                                "id": 404771,
+                                "name": "food processor",
+                                "localizedName": "food processor",
+                                "image": "food-processor.png"
+                            }
+                        ]
+                    },
+                    {
+                        "number": 2,
+                        "step": "Heat 1T butter and 1T oil in a large skillet over medium heat.",
+                        "ingredients": [
+                            {
+                                "id": 1001,
+                                "name": "butter",
+                                "localizedName": "butter",
+                                "image": "butter-sliced.jpg"
+                            },
+                            {
+                                "id": 4582,
+                                "name": "cooking oil",
+                                "localizedName": "cooking oil",
+                                "image": "vegetable-oil.jpg"
+                            }
+                        ],
+                        "equipment": [
+                            {
+                                "id": 404645,
+                                "name": "frying pan",
+                                "localizedName": "frying pan",
+                                "image": "pan.png"
+                            }
+                        ]
+                    },
+                    {
+                        "number": 3,
+                        "step": "Add garlic and the white and light green pieces of scallion. Sauté about a minute.",
+                        "ingredients": [
+                            {
+                                "id": 11291,
+                                "name": "green onions",
+                                "localizedName": "green onions",
+                                "image": "spring-onions.jpg"
+                            },
+                            {
+                                "id": 11215,
+                                "name": "garlic",
+                                "localizedName": "garlic",
+                                "image": "garlic.png"
+                            }
+                        ],
+                        "equipment": []
+                    },
+                    {
+                        "number": 4,
+                        "step": "Add the cauliflower to the pan. Stir to coat with oil, then spread out in pan and let sit; you want it cook a bit and to caramelize (get a bit brown), which will bring out the sweetness. After a couple of minutes, stir and spread out again.",
+                        "ingredients": [
+                            {
+                                "id": 11135,
+                                "name": "cauliflower",
+                                "localizedName": "cauliflower",
+                                "image": "cauliflower.jpg"
+                            },
+                            {
+                                "id": 0,
+                                "name": "spread",
+                                "localizedName": "spread",
+                                "image": ""
+                            },
+                            {
+                                "id": 4582,
+                                "name": "cooking oil",
+                                "localizedName": "cooking oil",
+                                "image": "vegetable-oil.jpg"
+                            }
+                        ],
+                        "equipment": [
+                            {
+                                "id": 404645,
+                                "name": "frying pan",
+                                "localizedName": "frying pan",
+                                "image": "pan.png"
+                            }
+                        ]
+                    },
+                    {
+                        "number": 5,
+                        "step": "Add cold rice (it separates easily, so it won't clump up during cooking), plus the additional grapeseed and coconut oil or butter. Raise heat to medium-high. Toss everything together and, again, spread the mixture out over the whole pan and press a bit into the bottom.",
+                        "ingredients": [
+                            {
+                                "id": 4047,
+                                "name": "coconut oil",
+                                "localizedName": "coconut oil",
+                                "image": "oil-coconut.jpg"
+                            },
+                            {
+                                "id": 1001,
+                                "name": "butter",
+                                "localizedName": "butter",
+                                "image": "butter-sliced.jpg"
+                            },
+                            {
+                                "id": 0,
+                                "name": "spread",
+                                "localizedName": "spread",
+                                "image": ""
+                            },
+                            {
+                                "id": 20444,
+                                "name": "rice",
+                                "localizedName": "rice",
+                                "image": "uncooked-white-rice.png"
+                            }
+                        ],
+                        "equipment": [
+                            {
+                                "id": 404645,
+                                "name": "frying pan",
+                                "localizedName": "frying pan",
+                                "image": "pan.png"
+                            }
+                        ]
+                    },
+                    {
+                        "number": 6,
+                        "step": "Let it sit for about two minutes—so the rice can get toasted and a little crispy.",
+                        "ingredients": [
+                            {
+                                "id": 20444,
+                                "name": "rice",
+                                "localizedName": "rice",
+                                "image": "uncooked-white-rice.png"
+                            }
+                        ],
+                        "equipment": [],
+                        "length": {
+                            "number": 2,
+                            "unit": "minutes"
+                        }
+                    },
+                    {
+                        "number": 7,
+                        "step": "Add the peas and broccoli and stir again.",
+                        "ingredients": [
+                            {
+                                "id": 11090,
+                                "name": "broccoli",
+                                "localizedName": "broccoli",
+                                "image": "broccoli.jpg"
+                            },
+                            {
+                                "id": 11304,
+                                "name": "peas",
+                                "localizedName": "peas",
+                                "image": "peas.jpg"
+                            }
+                        ],
+                        "equipment": []
+                    },
+                    {
+                        "number": 8,
+                        "step": "Drizzle soy sauce and toasted sesame oil over rice.Cook for another minute or so and turn off heat.",
+                        "ingredients": [
+                            {
+                                "id": 4058,
+                                "name": "sesame oil",
+                                "localizedName": "sesame oil",
+                                "image": "sesame-oil.png"
+                            },
+                            {
+                                "id": 16124,
+                                "name": "soy sauce",
+                                "localizedName": "soy sauce",
+                                "image": "soy-sauce.jpg"
+                            },
+                            {
+                                "id": 20444,
+                                "name": "rice",
+                                "localizedName": "rice",
+                                "image": "uncooked-white-rice.png"
+                            }
+                        ],
+                        "equipment": []
+                    },
+                    {
+                        "number": 9,
+                        "step": "Add chopped scallion tops and toss.I like to toast some sesame seeds in a dry pan; I sprinkle these and some more raw, chopped scallion over the top of the rice for added flavor and crunch.Season to taste with salt and, if you'd like, more soy sauce. Keep in mind that if you're serving this with something salty and saucy (ie. teriyaki chicken) you may want to hold off on adding too much salt to the fried rice.",
+                        "ingredients": [
+                            {
+                                "id": 12023,
+                                "name": "sesame seeds",
+                                "localizedName": "sesame seeds",
+                                "image": "sesame-seeds.png"
+                            },
+                            {
+                                "id": 16124,
+                                "name": "soy sauce",
+                                "localizedName": "soy sauce",
+                                "image": "soy-sauce.jpg"
+                            },
+                            {
+                                "id": 11291,
+                                "name": "green onions",
+                                "localizedName": "green onions",
+                                "image": "spring-onions.jpg"
+                            },
+                            {
+                                "id": 5006,
+                                "name": "whole chicken",
+                                "localizedName": "whole chicken",
+                                "image": "whole-chicken.jpg"
+                            },
+                            {
+                                "id": 18070,
+                                "name": "toast",
+                                "localizedName": "toast",
+                                "image": "toast"
+                            },
+                            {
+                                "id": 20444,
+                                "name": "rice",
+                                "localizedName": "rice",
+                                "image": "uncooked-white-rice.png"
+                            },
+                            {
+                                "id": 2047,
+                                "name": "salt",
+                                "localizedName": "salt",
+                                "image": "salt.jpg"
+                            }
+                        ],
+                        "equipment": [
+                            {
+                                "id": 404645,
+                                "name": "frying pan",
+                                "localizedName": "frying pan",
+                                "image": "pan.png"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "originalId": null,
+        "spoonacularSourceUrl": "https://spoonacular.com/cauliflower-brown-rice-and-vegetable-fried-rice-716426"
+    },
+    "https://api.spoonacular.com/recipes/715594/information?apiKey=bc8a88bb37dd49c3a640bff970e7d9f1": {
+        "vegetarian": true,
+        "vegan": true,
+        "glutenFree": false,
+        "dairyFree": true,
+        "veryHealthy": true,
+        "cheap": false,
+        "veryPopular": true,
+        "sustainable": false,
+        "weightWatcherSmartPoints": 19,
+        "gaps": "no",
+        "lowFodmap": false,
+        "aggregateLikes": 1669,
+        "spoonacularScore": 99,
+        "healthScore": 78,
+        "creditsText": "Jen West",
+        "sourceName": "Pink When",
+        "pricePerServing": 83.23,
+        "extendedIngredients": [
+            {
+                "id": 2044,
+                "aisle": "Produce;Spices and Seasonings",
+                "image": "basil.jpg",
+                "consistency": "solid",
+                "name": "basil",
+                "nameClean": "fresh basil",
+                "original": "1/4 cup basil",
+                "originalName": "basil",
+                "amount": 0.25,
+                "unit": "cup",
+                "meta": [],
+                "measures": {
+                    "us": {
+                        "amount": 0.25,
+                        "unitShort": "cups",
+                        "unitLong": "cups"
+                    },
+                    "metric": {
+                        "amount": 59.147,
+                        "unitShort": "ml",
+                        "unitLong": "milliliters"
+                    }
+                }
+            },
+            {
+                "id": 20081,
+                "aisle": "Baking",
+                "image": "flour.png",
+                "consistency": "solid",
+                "name": "flour",
+                "nameClean": "wheat flour",
+                "original": "1 cup flour",
+                "originalName": "flour",
+                "amount": 1,
+                "unit": "cup",
+                "meta": [],
+                "measures": {
+                    "us": {
+                        "amount": 1,
+                        "unitShort": "cup",
+                        "unitLong": "cup"
+                    },
+                    "metric": {
+                        "amount": 236.588,
+                        "unitShort": "ml",
+                        "unitLong": "milliliters"
+                    }
+                }
+            },
+            {
+                "id": 1022020,
+                "aisle": "Spices and Seasonings",
+                "image": "garlic-powder.png",
+                "consistency": "solid",
+                "name": "garlic powder",
+                "nameClean": "garlic powder",
+                "original": "1/4 garlic powder",
+                "originalName": "garlic powder",
+                "amount": 0.25,
+                "unit": "",
+                "meta": [],
+                "measures": {
+                    "us": {
+                        "amount": 0.25,
+                        "unitShort": "",
+                        "unitLong": ""
+                    },
+                    "metric": {
+                        "amount": 0.25,
+                        "unitShort": "",
+                        "unitLong": ""
+                    }
+                }
+            },
+            {
+                "id": 1062047,
+                "aisle": "Spices and Seasonings",
+                "image": "garlic-salt.jpg",
+                "consistency": "solid",
+                "name": "garlic salt",
+                "nameClean": "garlic salt",
+                "original": "garlic salt with parsley (to sprinkle)",
+                "originalName": "garlic salt with parsley (to sprinkle)",
+                "amount": 2,
+                "unit": "servings",
+                "meta": [
+                    "with parsley (to sprinkle)"
+                ],
+                "measures": {
+                    "us": {
+                        "amount": 2,
+                        "unitShort": "servings",
+                        "unitLong": "servings"
+                    },
+                    "metric": {
+                        "amount": 2,
+                        "unitShort": "servings",
+                        "unitLong": "servings"
+                    }
+                }
+            },
+            {
+                "id": 11352,
+                "aisle": "Produce",
+                "image": "potatoes-yukon-gold.png",
+                "consistency": "solid",
+                "name": "potatoes",
+                "nameClean": "potato",
+                "original": "4 sliced, fresh potatoes",
+                "originalName": "sliced, fresh potatoes",
+                "amount": 4,
+                "unit": "",
+                "meta": [
+                    "fresh",
+                    "sliced"
+                ],
+                "measures": {
+                    "us": {
+                        "amount": 4,
+                        "unitShort": "",
+                        "unitLong": ""
+                    },
+                    "metric": {
+                        "amount": 4,
+                        "unitShort": "",
+                        "unitLong": ""
+                    }
+                }
+            },
+            {
+                "id": 4513,
+                "aisle": null,
+                "image": null,
+                "consistency": null,
+                "name": "vegetable oil",
+                "nameClean": null,
+                "original": "vegetable oil",
+                "originalName": "vegetable oil",
+                "amount": 2,
+                "unit": "servings",
+                "meta": [],
+                "measures": {
+                    "us": {
+                        "amount": 2,
+                        "unitShort": "servings",
+                        "unitLong": "servings"
+                    },
+                    "metric": {
+                        "amount": 2,
+                        "unitShort": "servings",
+                        "unitLong": "servings"
+                    }
+                }
+            }
+        ],
+        "id": 715594,
+        "title": "Homemade Garlic and Basil French Fries",
+        "readyInMinutes": 45,
+        "servings": 2,
+        "sourceUrl": "http://www.pinkwhen.com/homemade-french-fries/",
+        "image": "https://spoonacular.com/recipeImages/715594-556x370.jpg",
+        "imageType": "jpg",
+        "summary": "The recipe Homemade Garlic and Basil French Fries is ready <b>in roughly 45 minutes</b> and is definitely a super <b>vegan</b> option for lovers of American food. One serving contains <b>596 calories</b>, <b>18g of protein</b>, and <b>15g of fat</b>. For <b>83 cents per serving</b>, you get a side dish that serves 2. Several people made this recipe, and 1669 would say it hit the spot. If you have garlic salt, flour, garlic powder, and a few other ingredients on hand, you can make it. All things considered, we decided this recipe <b>deserves a spoonacular score of 100%</b>. This score is outstanding. Try <a href=\"https://spoonacular.com/recipes/homemade-french-fries-with-fresh-garlic-and-dill-494220\">Homemade French Fries with Fresh Garlic and Dill</a>, <a href=\"https://spoonacular.com/recipes/roasted-garlic-french-fries-519898\">Roasted Garlic French Fries</a>, and <a href=\"https://spoonacular.com/recipes/sweet-potato-fries-with-basil-salt-and-garlic-mayonnaise-120735\">Sweet Potato Fries With Basil Salt and Garlic Mayonnaise</a> for similar recipes.",
+        "cuisines": [
+            "American"
+        ],
+        "dishTypes": [
+            "lunch",
+            "main course",
+            "main dish",
+            "dinner"
+        ],
+        "diets": [
+            "dairy free",
+            "lacto ovo vegetarian",
+            "vegan"
+        ],
+        "occasions": [],
+        "winePairing": {
+            "pairedWines": [],
+            "pairingText": "",
+            "productMatches": []
+        },
+        "instructions": null,
+        "analyzedInstructions": [],
+        "originalId": null,
+        "spoonacularSourceUrl": "https://spoonacular.com/homemade-garlic-and-basil-french-fries-715594"
+    },
+    "https://api.spoonacular.com/recipes/716426/analyzedInstructions?apiKey=bc8a88bb37dd49c3a640bff970e7d9f1": [
+        {
+            "name": "",
+            "steps": [
+                {
+                    "number": 1,
+                    "step": "Remove the cauliflower's tough stem and reserve for another use. Using a food processor, pulse cauliflower florets until they resemble rice or couscous. You should end up with around four cups of \"cauliflower rice.\"",
+                    "ingredients": [
+                        {
+                            "id": 10011135,
+                            "name": "cauliflower florets",
+                            "localizedName": "cauliflower florets",
+                            "image": "cauliflower.jpg"
+                        },
+                        {
+                            "id": 10111135,
+                            "name": "cauliflower rice",
+                            "localizedName": "cauliflower rice",
+                            "image": "cauliflower.jpg"
+                        },
+                        {
+                            "id": 11135,
+                            "name": "cauliflower",
+                            "localizedName": "cauliflower",
+                            "image": "cauliflower.jpg"
+                        },
+                        {
+                            "id": 20028,
+                            "name": "couscous",
+                            "localizedName": "couscous",
+                            "image": "couscous-cooked.jpg"
+                        },
+                        {
+                            "id": 20444,
+                            "name": "rice",
+                            "localizedName": "rice",
+                            "image": "uncooked-white-rice.png"
+                        }
+                    ],
+                    "equipment": [
+                        {
+                            "id": 404771,
+                            "name": "food processor",
+                            "localizedName": "food processor",
+                            "image": "food-processor.png"
+                        }
+                    ]
+                },
+                {
+                    "number": 2,
+                    "step": "Heat 1T butter and 1T oil in a large skillet over medium heat.",
+                    "ingredients": [
+                        {
+                            "id": 1001,
+                            "name": "butter",
+                            "localizedName": "butter",
+                            "image": "butter-sliced.jpg"
+                        },
+                        {
+                            "id": 4582,
+                            "name": "cooking oil",
+                            "localizedName": "cooking oil",
+                            "image": "vegetable-oil.jpg"
+                        }
+                    ],
+                    "equipment": [
+                        {
+                            "id": 404645,
+                            "name": "frying pan",
+                            "localizedName": "frying pan",
+                            "image": "pan.png"
+                        }
+                    ]
+                },
+                {
+                    "number": 3,
+                    "step": "Add garlic and the white and light green pieces of scallion. Sauté about a minute.",
+                    "ingredients": [
+                        {
+                            "id": 11291,
+                            "name": "green onions",
+                            "localizedName": "green onions",
+                            "image": "spring-onions.jpg"
+                        },
+                        {
+                            "id": 11215,
+                            "name": "garlic",
+                            "localizedName": "garlic",
+                            "image": "garlic.png"
+                        }
+                    ],
+                    "equipment": []
+                },
+                {
+                    "number": 4,
+                    "step": "Add the cauliflower to the pan. Stir to coat with oil, then spread out in pan and let sit; you want it cook a bit and to caramelize (get a bit brown), which will bring out the sweetness. After a couple of minutes, stir and spread out again.",
+                    "ingredients": [
+                        {
+                            "id": 11135,
+                            "name": "cauliflower",
+                            "localizedName": "cauliflower",
+                            "image": "cauliflower.jpg"
+                        },
+                        {
+                            "id": 0,
+                            "name": "spread",
+                            "localizedName": "spread",
+                            "image": ""
+                        },
+                        {
+                            "id": 4582,
+                            "name": "cooking oil",
+                            "localizedName": "cooking oil",
+                            "image": "vegetable-oil.jpg"
+                        }
+                    ],
+                    "equipment": [
+                        {
+                            "id": 404645,
+                            "name": "frying pan",
+                            "localizedName": "frying pan",
+                            "image": "pan.png"
+                        }
+                    ]
+                },
+                {
+                    "number": 5,
+                    "step": "Add cold rice (it separates easily, so it won't clump up during cooking), plus the additional grapeseed and coconut oil or butter. Raise heat to medium-high. Toss everything together and, again, spread the mixture out over the whole pan and press a bit into the bottom.",
+                    "ingredients": [
+                        {
+                            "id": 4047,
+                            "name": "coconut oil",
+                            "localizedName": "coconut oil",
+                            "image": "oil-coconut.jpg"
+                        },
+                        {
+                            "id": 1001,
+                            "name": "butter",
+                            "localizedName": "butter",
+                            "image": "butter-sliced.jpg"
+                        },
+                        {
+                            "id": 0,
+                            "name": "spread",
+                            "localizedName": "spread",
+                            "image": ""
+                        },
+                        {
+                            "id": 20444,
+                            "name": "rice",
+                            "localizedName": "rice",
+                            "image": "uncooked-white-rice.png"
+                        }
+                    ],
+                    "equipment": [
+                        {
+                            "id": 404645,
+                            "name": "frying pan",
+                            "localizedName": "frying pan",
+                            "image": "pan.png"
+                        }
+                    ]
+                },
+                {
+                    "number": 6,
+                    "step": "Let it sit for about two minutes—so the rice can get toasted and a little crispy.",
+                    "ingredients": [
+                        {
+                            "id": 20444,
+                            "name": "rice",
+                            "localizedName": "rice",
+                            "image": "uncooked-white-rice.png"
+                        }
+                    ],
+                    "equipment": [],
+                    "length": {
+                        "number": 2,
+                        "unit": "minutes"
+                    }
+                },
+                {
+                    "number": 7,
+                    "step": "Add the peas and broccoli and stir again.",
+                    "ingredients": [
+                        {
+                            "id": 11090,
+                            "name": "broccoli",
+                            "localizedName": "broccoli",
+                            "image": "broccoli.jpg"
+                        },
+                        {
+                            "id": 11304,
+                            "name": "peas",
+                            "localizedName": "peas",
+                            "image": "peas.jpg"
+                        }
+                    ],
+                    "equipment": []
+                },
+                {
+                    "number": 8,
+                    "step": "Drizzle soy sauce and toasted sesame oil over rice.Cook for another minute or so and turn off heat.",
+                    "ingredients": [
+                        {
+                            "id": 4058,
+                            "name": "sesame oil",
+                            "localizedName": "sesame oil",
+                            "image": "sesame-oil.png"
+                        },
+                        {
+                            "id": 16124,
+                            "name": "soy sauce",
+                            "localizedName": "soy sauce",
+                            "image": "soy-sauce.jpg"
+                        },
+                        {
+                            "id": 20444,
+                            "name": "rice",
+                            "localizedName": "rice",
+                            "image": "uncooked-white-rice.png"
+                        }
+                    ],
+                    "equipment": []
+                },
+                {
+                    "number": 9,
+                    "step": "Add chopped scallion tops and toss.I like to toast some sesame seeds in a dry pan; I sprinkle these and some more raw, chopped scallion over the top of the rice for added flavor and crunch.Season to taste with salt and, if you'd like, more soy sauce. Keep in mind that if you're serving this with something salty and saucy (ie. teriyaki chicken) you may want to hold off on adding too much salt to the fried rice.",
+                    "ingredients": [
+                        {
+                            "id": 12023,
+                            "name": "sesame seeds",
+                            "localizedName": "sesame seeds",
+                            "image": "sesame-seeds.png"
+                        },
+                        {
+                            "id": 16124,
+                            "name": "soy sauce",
+                            "localizedName": "soy sauce",
+                            "image": "soy-sauce.jpg"
+                        },
+                        {
+                            "id": 11291,
+                            "name": "green onions",
+                            "localizedName": "green onions",
+                            "image": "spring-onions.jpg"
+                        },
+                        {
+                            "id": 5006,
+                            "name": "whole chicken",
+                            "localizedName": "whole chicken",
+                            "image": "whole-chicken.jpg"
+                        },
+                        {
+                            "id": 18070,
+                            "name": "toast",
+                            "localizedName": "toast",
+                            "image": "toast"
+                        },
+                        {
+                            "id": 20444,
+                            "name": "rice",
+                            "localizedName": "rice",
+                            "image": "uncooked-white-rice.png"
+                        },
+                        {
+                            "id": 2047,
+                            "name": "salt",
+                            "localizedName": "salt",
+                            "image": "salt.jpg"
+                        }
+                    ],
+                    "equipment": [
+                        {
+                            "id": 404645,
+                            "name": "frying pan",
+                            "localizedName": "frying pan",
+                            "image": "pan.png"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
 }
