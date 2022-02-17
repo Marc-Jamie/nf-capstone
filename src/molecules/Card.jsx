@@ -9,6 +9,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandMore from "./expand-more/styled";
 import Collapse from "@mui/material/Collapse";
 import Link from "next/link";
+import Button from "@mui/material/Button";
 
 const RecipeCard = ({ recipe }) => {
 	const { data } = useGet(`/api/spoonacular/recipes/${recipe.id}/information`);
@@ -47,6 +48,7 @@ const RecipeCard = ({ recipe }) => {
 
 				{data && (
 					<Typography paragraph>
+						<Button>Add to shoppinglist </Button>
 						<ul>
 							You need:
 							{data.extendedIngredients?.map(ingredient => {
