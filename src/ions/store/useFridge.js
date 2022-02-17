@@ -60,5 +60,3 @@ const useFridge = create(
 );
 
 export default useFridge;
-
-//persist(alles was in create ist, {name: "currywurst"}) "create(persist())"

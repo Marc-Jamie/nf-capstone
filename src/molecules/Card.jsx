@@ -1,38 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import useGet from "../ions/hooks/fetch/get";
-import { useEffect } from "react";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandMore from "./expand-more/styled";
 import Collapse from "@mui/material/Collapse";
+import Link from "next/link";
 
 const RecipeCard = ({ recipe }) => {
-	const { data } = useGet(`api/spoonacular/recipes/${recipe.id}/information`);
-	useEffect(() => {
-		console.log(data);
-	}, [data]);
-	console.log(data);
-
-	const [expanded, setExpanded] = React.useState(false);
+	const { data } = useGet(`/api/spoonacular/recipes/${recipe.id}/information`);
+	const [expanded, setExpanded] = useState(false);
 
 	const handleExpandClick = () => {
 		setExpanded(!expanded);
 	};
-	console.log(recipe);
 	return (
 		<Card sx={{ maxWidth: 345 }}>
 			{data && (
-				<CardHeader
-					title={recipe.title}
-					subheader={`ready in: ${data.readyInMinutes} minutes`}
-				/>
+				<Link href={`/recipe/${recipe.id}`}>
+					<CardHeader
+						title={recipe.title}
+						subheader={`ready in: ${data.readyInMinutes} minutes`}
+					/>
+				</Link>
 			)}
 			<CardMedia component="img" height="140" image={recipe.image} alt={recipe.title} />
-
 			<ExpandMore
 				expand={expanded}
 				aria-expanded={expanded}
@@ -49,6 +44,7 @@ const RecipeCard = ({ recipe }) => {
 						</Typography>
 					)}
 				</CardContent>
+
 				{data && (
 					<Typography paragraph>
 						<ul>

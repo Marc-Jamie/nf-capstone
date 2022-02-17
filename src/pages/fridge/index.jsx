@@ -1,77 +1,113 @@
-import React, { useState } from "react";
-import useFridge from "../../ions/store/useFridge";
+import React, { useState, useEffect } from "react";
+import Box from "@mui/material/Box";
+import Autocomplete from "@mui/material/Autocomplete";
+import TextField from "@mui/material/TextField";
+import { useDebounce } from "use-debounce";
+import axios from "axios";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
+import ListItemAvatar from "@mui/material/ListItemAvatar";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
 
 const Fridge = () => {
-	const [value, setValue] = useState("");
-	const ingredients = useFridge(state => state.ingredients);
-	const addIngredient = useFridge(state => state.addIngredient);
-	const deleteIngredient = useFridge(state => state.deleteIngredient);
-	const editIngredient = useFridge(state => state.editIngredient);
-	const setEditValue = useFridge(state => state.setEditValue);
-	const saveEditedIngredient = useFridge(state => state.saveEditedIngredient);
+	// const [value, setValue] = useState("");
+	// const ingredients = useFridge(state => state.ingredients);
+	// const addIngredient = useFridge(state => state.addIngredient);
+	// const deleteIngredient = useFridge(state => state.deleteIngredient);
+	// const editIngredient = useFridge(state => state.editIngredient);
+	// const setEditValue = useFridge(state => state.setEditValue);
+	// const saveEditedIngredient = useFridge(state => state.saveEditedIngredient);
+
+	const [results, setResults] = useState([]);
+	const [resultsRaw, setResultsRaw] = useState([]);
+	const [valueA, setValueA] = useState(results[0]);
+	const [inputValue, setInputValue] = useState("");
+	const [debouncedInputValue] = useDebounce(inputValue, 1_000);
+	const [allIngredients, setAllIngredients] = useState([]);
+
+	useEffect(() => {
+		axios
+			.get(
+				`/api/spoonacular-cache/food/ingredients/autocomplete?metaInformation=true&query=${debouncedInputValue}`
+			)
+			.then(response => {
+				setResultsRaw(response.data);
+				setResults(response.data.map(({ name }) => name));
+			});
+	}, [debouncedInputValue]);
 
 	return (
 		<>
-			<form
-				onSubmit={event_ => {
-					event_.preventDefault();
-
-					if (value) {
-						addIngredient(value);
-						setValue("");
-					}
+			<Box
+				sx={{
+					display: "flex",
+					alignItems: "flex-start",
+					marginTop: 5,
 				}}
 			>
-				<input
-					type="text"
-					placeholder="ingredient"
-					value={value}
-					onChange={event_ => {
-						setValue(event_.target.value);
+				<Autocomplete
+					value={valueA}
+					inputValue={inputValue}
+					options={results}
+					sx={{ width: 300 }}
+					renderInput={params => <TextField {...params} />}
+					onChange={(event, newValue) => {
+						setValueA(newValue);
+					}}
+					onInputChange={(event, newInputValue) => {
+						setInputValue(newInputValue);
 					}}
 				/>
-				<button type="submit">Add</button>
-			</form>
-			<ul>
-				{ingredients.map((ingredient, index) => {
-					return (
-						<li key={ingredient.id}>
-							{ingredient.edit ? (
-								<input
-									type="text"
-									value={ingredient.editValue}
-									onChange={event_ => {
-										setEditValue(event_.target.value, index);
-									}}
-								/>
-							) : (
-								<span>{ingredient.name}</span>
-							)}
-							<button
-								type="button"
-								onClick={() => {
-									if (ingredient.edit) {
-										saveEditedIngredient(index);
-									} else {
-										editIngredient(index);
-									}
-								}}
-							>
-								{ingredient.edit ? "save" : "edit"}
-							</button>
+				<Button
+					sx={{ height: 56 }}
+					variant="contained"
+					onClick={() => {
+						const newItem = resultsRaw.filter(item => item.name === valueA);
+						setAllIngredients([newItem[0], ...allIngredients]);
+					}}
+				>
+					Add
+				</Button>
+			</Box>
 
-							<button
-								type="button"
-								onClick={() => {
-									deleteIngredient(index);
-								}}
-							>
-								delete
-							</button>
-						</li>
+			<List dense sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
+				{allIngredients?.map(ingredient => {
+					const labelId = `checkbox-list-secondary-label-${ingredient.indexOf}`;
+					return (
+						<ListItem key={ingredient.id} disablePadding>
+							<ListItemButton>
+								<ListItemAvatar>
+									<Avatar
+										alt={ingredient.name}
+										src={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}`}
+									/>
+								</ListItemAvatar>
+								<ListItemText id={labelId} primary={ingredient.name} />
+							</ListItemButton>
+						</ListItem>
 					);
 				})}
-			</ul>
+			</List>
+			<Button
+				sx={{ height: 56 }}
+				variant="contained"
+				// onClick={() => {
+				// 	axios
+				// 		.get(
+				// 			`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${allIngredients.name}`
+				// 		)
+				// 		.then(response => {
+				// 			response.map(response => {
+				// 				return <RecipeReviewCard key={response.id} />;
+				// 			});
+				// 		});
+				// }}
+			>
+				Lets get cooking!
+			</Button>
 		</>
 	);
 };

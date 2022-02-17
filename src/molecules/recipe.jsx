@@ -12,13 +12,12 @@ import { useParams } from "react-router-dom";
 const Recipe = () => {
 	const { id } = useParams();
 
-	const { data } = useGet(
-		`https://api.spoonacular.com/recipes/${id}/information?apiKey=${process.env.REACT_APP_SPOONACULAR_API_KEY}`
-	);
+	const { data } = useGet(`api/spoonacular.com/recipes/${id}/information`);
 
 	const { data: instructionsData } = useGet(
-		`https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=${process.env.REACT_APP_SPOONACULAR_API_KEY}`
+		`api/spoonacular.com/recipes/${id}/analyzedInstructions`
 	);
+
 	if (!data || !instructionsData) {
 		return <div>loading... </div>;
 	}

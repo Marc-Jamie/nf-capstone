@@ -3,35 +3,32 @@
 import axios from "axios";
 import path from "node:path";
 import process from "node:process";
-import { readFile, writeFile } from "fs/promises";
+import { URLSearchParams } from "node:url";
 
-// const REFRESH_INTERVAL = 1000 * 60 * 60 * 24 * 180;
-const cacheFile = path.join(process.cwd(), "cache.json");
-
+const cache = {};
 const handler = async (request, response) => {
-	const cacheBuffer = await readFile(cacheFile);
-	const cache = JSON.parse(cacheBuffer);
 	console.log(cache);
 	const { args, ...params } = request.query;
+	console.log(request.query);
 	const id = args.join("/");
 	const host = "api.spoonacular.com";
 	const endpoint = path.join(host, id);
-	const url = `https://${endpoint}?apiKey=${process.env.NEXT_PUBLIC_SPOONACULAR_API_KEY}`;
+	const url = `https://${endpoint}`;
 
 	const options = {
-		params,
+		params: { ...params, apiKey: process.env.NEXT_PUBLIC_SPOONACULAR_API_KEY },
 	};
-
-	if (cache[url]) {
+	const urlParams = new URLSearchParams(params).toString();
+	const key = `${url}?${urlParams}`;
+	console.log(key);
+	if (cache[key]) {
 		console.log(`Getting data from cache on ${new Date().toISOString()}`);
-		response.status(200).json(cache[url]);
+		response.status(200).json(cache[key]);
 	} else {
 		console.log(`Fetching new data from API on ${new Date().toISOString()}`);
 		const { data } = await axios.get(url, options);
 
-		cache[url] = data;
-
-		writeFile(cacheFile, JSON.stringify(cache, null, 4));
+		cache[key] = data;
 
 		response.status(200).json(data);
 	}

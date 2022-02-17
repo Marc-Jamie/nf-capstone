@@ -1,14 +1,14 @@
-import {Helmet} from "react-helmet";
+import Head from "next/head";
 import React from "react";
 import Layout from "../../organisms/layout";
 
 const Page = () => {
 	return (
 		<Layout>
-			<Helmet>
+			<Head>
 				<title key="title">About</title>
 				<meta key="description" name="description" content="About" />
-			</Helmet>
+			</Head>
 			<h1>About</h1>
 		</Layout>
 	);
