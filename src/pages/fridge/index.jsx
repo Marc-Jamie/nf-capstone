@@ -11,7 +11,6 @@ import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import RecipeReviewCard from "../../molecules/Cards";
 
 const Fridge = () => {
 	// const [value, setValue] = useState("");

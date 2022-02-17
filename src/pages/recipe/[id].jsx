@@ -75,9 +75,9 @@ const Recipe = () => {
 				</Table>
 			</TableContainer>
 			{instructionsData.length > 0 && <Typography variant="h2">Preparation</Typography>}
-			{instructionsData.map((instruction, index) => {
+			{instructionsData.map(instruction => {
 				return (
-					<Typography key={index}>
+					<Typography key={instruction.id}>
 						<Typography variant="h3">{instruction.name}</Typography>
 						<List>
 							{instruction.steps.map(step => {

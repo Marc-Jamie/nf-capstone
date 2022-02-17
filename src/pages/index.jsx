@@ -1,6 +1,6 @@
 import Head from "next/head";
 import React from "react";
-import useGet from "../ions/hooks/fetch/get";
+// import useGet from "../ions/hooks/fetch/get";
 import Layout from "../organisms/layout";
 import RecipeReviewCard from "../molecules/Cards";
 
