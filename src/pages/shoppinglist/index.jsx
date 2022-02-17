@@ -1,5 +1,12 @@
 import React, { useState } from "react";
 import useShoppinglist from "../../ions/store/useShoppinglist";
+import InputLabel from "@mui/material/InputLabel";
+import Button from "@mui/material/Button";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import ListItem from "@mui/material/ListItem";
+import List from "@mui/material/List";
+import Input from "@mui/material/Input";
+import Checkbox from "@mui/material/Checkbox";
 
 const ShoppingList = () => {
 	const [value, setValue] = useState("");
@@ -14,6 +21,81 @@ const ShoppingList = () => {
 	return (
 		<>
 			<form
+				style={{ backgroundColor: "black" }}
+				onSubmit={event_ => {
+					event_.preventDefault();
+
+					if (value) {
+						addIngredient(value);
+						setValue("");
+					}
+				}}
+			>
+				<InputLabel htmlFor="my-input">Shopping List</InputLabel>
+				<OutlinedInput
+					placeholder="What do I need?"
+					value={value}
+					onChange={event_ => {
+						setValue(event_.target.value);
+					}}
+				/>
+				<Button type="submit">Add</Button>
+			</form>
+
+			<List dense sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
+				{ingredients.map((ingredient, index) => {
+					return (
+						<ListItem key={ingredient.id}>
+							<Checkbox
+								checked={ingredient.isChecked ? ingredient.isChecked : false}
+								onChange={() => {
+									checkIngredient(index);
+								}}
+							/>
+
+							{ingredient.edit ? (
+								<Input
+									type="text"
+									value={ingredient.editValue}
+									onChange={event_ => {
+										setEditValue(event_.target.value, index);
+									}}
+								/>
+							) : (
+								<span
+									style={
+										ingredient.isChecked
+											? { color: "green", textDecoration: "line-through" }
+											: null
+									}
+								>
+									{ingredient.name}
+								</span>
+							)}
+							<Button
+								onClick={() => {
+									if (ingredient.edit) {
+										saveEditedIngredient(index);
+									} else {
+										editIngredient(index);
+									}
+								}}
+							>
+								{ingredient.edit ? "save" : "edit"}
+							</Button>
+
+							<Button
+								onClick={() => {
+									deleteIngredient(index);
+								}}
+							>
+								delete
+							</Button>
+						</ListItem>
+					);
+				})}
+			</List>
+			{/* <form
 				onSubmit={event_ => {
 					event_.preventDefault();
 
@@ -88,7 +170,7 @@ const ShoppingList = () => {
 						</li>
 					);
 				})}
-			</ul>
+			</ul> */}
 		</>
 	);
 };

@@ -11,7 +11,7 @@ import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-
+import RecipeCard from "../../molecules/Card";
 const Fridge = () => {
 	// const [value, setValue] = useState("");
 	// const ingredients = useFridge(state => state.ingredients);
@@ -27,6 +27,7 @@ const Fridge = () => {
 	const [inputValue, setInputValue] = useState("");
 	const [debouncedInputValue] = useDebounce(inputValue, 1_000);
 	const [allIngredients, setAllIngredients] = useState([]);
+	const [recipeResults, setRecipeResults] = useState([]);
 
 	useEffect(() => {
 		axios
@@ -86,6 +87,16 @@ const Fridge = () => {
 									/>
 								</ListItemAvatar>
 								<ListItemText id={labelId} primary={ingredient.name} />
+								<Button
+									onClick={() => {
+										const updatedList = allIngredients.filter(
+											element => element.id !== ingredient.id
+										);
+										setAllIngredients(updatedList);
+									}}
+								>
+									Remove
+								</Button>
 							</ListItemButton>
 						</ListItem>
 					);
@@ -94,20 +105,24 @@ const Fridge = () => {
 			<Button
 				sx={{ height: 56 }}
 				variant="contained"
-				// onClick={() => {
-				// 	axios
-				// 		.get(
-				// 			`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${allIngredients.name}`
-				// 		)
-				// 		.then(response => {
-				// 			response.map(response => {
-				// 				return <RecipeReviewCard key={response.id} />;
-				// 			});
-				// 		});
-				// }}
+				onClick={() => {
+					const ingredients = [allIngredients.map(ingredient => ingredient.name)];
+					const joined = ingredients[0].join(",+");
+					axios
+						.get(
+							`/api/spoonacular-cache/recipes/findByIngredients?ingredients=${joined}`
+						)
+						//this doesnt work yet
+						.then(response => {
+							setRecipeResults(response.data);
+						});
+				}}
 			>
 				Lets get cooking!
 			</Button>
+			{recipeResults?.map(result => {
+				return <RecipeCard key={result.id} recipe={result} />;
+			})}
 		</>
 	);
 };
