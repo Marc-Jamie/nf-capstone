@@ -110,7 +110,7 @@ const Fridge = () => {
 					const joined = ingredients[0].join(",+");
 					axios
 						.get(
-							`/api/spoonacular-cache/recipes/findByIngredients?ingredients=${joined}`
+							`/api/spoonacular-cache/recipes/findByIngredients?ingredients=${joined}&ignorePantry=true`
 						)
 						//this doesnt work yet
 						.then(response => {

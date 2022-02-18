@@ -22,6 +22,14 @@ const useShoppinglist = create(
 						})
 					);
 				},
+				deleteCompletedIngredients: () =>
+					set(state => {
+						return {
+							ingredients: state.ingredients.filter(
+								ingredient => !ingredient.isChecked
+							),
+						};
+					}),
 				editIngredient: index => {
 					set(
 						produce(state => {

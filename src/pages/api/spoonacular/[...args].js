@@ -31,7 +31,7 @@ const handler = async (request, response) => {
 
 		cache[url] = data;
 
-		writeFile(cacheFile, JSON.stringify(cache, null, 4));
+		writeFile(cacheFile, JSON.stringify(cache));
 
 		response.status(200).json(data);
 	}
