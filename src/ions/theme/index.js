@@ -1,9 +1,6 @@
 import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
-	palette: {
-		mode: "dark",
-	},
 	typography: {
 		h2: {
 			fontFamily: "fantasy",
@@ -33,6 +30,7 @@ const theme = createTheme({
 			styleOverrides: {
 				root: {
 					borderRadius: 0,
+					backgroundColor: "#FF00FF",
 				},
 			},
 		},

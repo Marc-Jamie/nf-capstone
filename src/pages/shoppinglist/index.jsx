@@ -17,11 +17,10 @@ const ShoppingList = () => {
 	const setEditValue = useShoppinglist(state => state.setEditValue);
 	const saveEditedIngredient = useShoppinglist(state => state.saveEditedIngredient);
 	const checkIngredient = useShoppinglist(state => state.checkIngredient);
-
+	const deleteCompletedIngredients = useShoppinglist(state => state.deleteCompletedIngredients);
 	return (
 		<>
 			<form
-				style={{ backgroundColor: "black" }}
 				onSubmit={event_ => {
 					event_.preventDefault();
 
@@ -94,7 +93,15 @@ const ShoppingList = () => {
 						</ListItem>
 					);
 				})}
+				<Button
+					onClick={() => {
+						deleteCompletedIngredients();
+					}}
+				>
+					Delete All Selected items
+				</Button>
 			</List>
+
 			{/* <form
 				onSubmit={event_ => {
 					event_.preventDefault();

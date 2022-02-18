@@ -10,10 +10,12 @@ import ExpandMore from "./expand-more/styled";
 import Collapse from "@mui/material/Collapse";
 import Link from "next/link";
 import Button from "@mui/material/Button";
+import useShoppinglist from "../ions/store/useShoppinglist";
 
 const RecipeCard = ({ recipe }) => {
 	const { data } = useGet(`/api/spoonacular/recipes/${recipe.id}/information`);
 	const [expanded, setExpanded] = useState(false);
+	const addIngredient = useShoppinglist(state => state.addIngredient);
 
 	const handleExpandClick = () => {
 		setExpanded(!expanded);
@@ -40,26 +42,40 @@ const RecipeCard = ({ recipe }) => {
 			<Collapse unmountOnExit in={expanded} timeout="auto">
 				<CardContent>
 					{data && (
-						<Typography>
+						<Typography component="div">
 							<span dangerouslySetInnerHTML={{ __html: data.summary }} />
 						</Typography>
 					)}
 				</CardContent>
 
 				{data && (
-					<Typography paragraph>
-						<Button>Add to shoppinglist </Button>
-						<ul>
+					<div>
+						<Button
+							onClick={() => {
+								const listItems = data.extendedIngredients.map(ingredient => {
+									return ingredient.name;
+								});
+								console.log(listItems);
+
+								listItems.map(item => {
+									addIngredient(item);
+								});
+							}}
+						>
+							Add to shoppinglist
+						</Button>
+
+						<Typography component="ul">
 							You need:
 							{data.extendedIngredients?.map(ingredient => {
 								return (
-									<li key={ingredient.id}>
+									<Typography key={ingredient.id} component="li">
 										{ingredient.amount} {ingredient.unit} {ingredient.name}
-									</li>
+									</Typography>
 								);
 							})}
-						</ul>
-					</Typography>
+						</Typography>
+					</div>
 				)}
 			</Collapse>
 		</Card>

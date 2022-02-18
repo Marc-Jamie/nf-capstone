@@ -9,7 +9,9 @@ import Stack from "@mui/material/Stack";
 import { useRouter } from "next/router";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
+import Button from "@mui/material/Button";
 import uniqBy from "lodash.uniqby";
+import useShoppinglist from "../../ions/store/useShoppinglist";
 //mui table >>>>>>>
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -21,6 +23,8 @@ import Paper from "@mui/material/Paper";
 //>>>>>>
 
 const Recipe = () => {
+	const addIngredient = useShoppinglist(state => state.addIngredient);
+
 	const {
 		query: { id },
 	} = useRouter();
@@ -61,7 +65,7 @@ const Recipe = () => {
 					<TableBody>
 						{uniqueIngredients.map(row => (
 							<TableRow
-								key={row.name + row.unit}
+								key={row.id}
 								sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
 							>
 								<TableCell component="th" scope="row">
@@ -73,20 +77,37 @@ const Recipe = () => {
 						))}
 					</TableBody>
 				</Table>
+				<Button
+					onClick={() => {
+						const listItems = data.extendedIngredients.map(ingredient => {
+							return ingredient.name;
+						});
+						console.log(listItems);
+
+						listItems.map(item => {
+							addIngredient(item);
+						});
+					}}
+				>
+					Add to shoppinglist
+				</Button>
 			</TableContainer>
 			{instructionsData.length > 0 && <Typography variant="h2">Preparation</Typography>}
-			{instructionsData.map(instruction => {
-				return (
-					<Typography key={instruction.id}>
-						<Typography variant="h3">{instruction.name}</Typography>
-						<List>
-							{instruction.steps.map(step => {
-								return <ListItem key={step.number}>{step.step}</ListItem>;
-							})}
-						</List>
-					</Typography>
-				);
-			})}
+			{instructionsData
+				.map((item, index) => ({ ...item, id: index }))
+				.map(instruction => {
+					return (
+						<div key={instruction.id}>
+							<Typography variant="h3">{instruction.name}</Typography>
+							<List>
+								{instruction.steps.map(step => {
+									console.log(step);
+									return <ListItem key={step.number}>{step.step}</ListItem>;
+								})}
+							</List>
+						</div>
+					);
+				})}
 		</Card>
 	);
 };
