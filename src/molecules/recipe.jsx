@@ -36,7 +36,6 @@ const Recipe = () => {
 
 			<ul>
 				{data.extendedIngredients.map(ingredient => {
-					console.log(ingredient.id);
 					return <li key={ingredient.id}>{ingredient.name}</li>;
 				})}
 			</ul>

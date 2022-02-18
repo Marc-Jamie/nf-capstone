@@ -82,7 +82,6 @@ const Recipe = () => {
 						const listItems = data.extendedIngredients.map(ingredient => {
 							return ingredient.name;
 						});
-						console.log(listItems);
 
 						listItems.map(item => {
 							addIngredient(item);
@@ -101,7 +100,6 @@ const Recipe = () => {
 							<Typography variant="h3">{instruction.name}</Typography>
 							<List>
 								{instruction.steps.map(step => {
-									console.log(step);
 									return <ListItem key={step.number}>{step.step}</ListItem>;
 								})}
 							</List>

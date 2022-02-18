@@ -41,6 +41,10 @@ const RecipeCard = ({ recipe }) => {
 			</ExpandMore>
 			<Collapse unmountOnExit in={expanded} timeout="auto">
 				<CardContent>
+					{/* Test this out:
+					<Typography variant="h6" >
+					{HTMLparse(`${data.summary}`)}
+					</Typography> */}
 					{data && (
 						<Typography component="div">
 							<span dangerouslySetInnerHTML={{ __html: data.summary }} />
