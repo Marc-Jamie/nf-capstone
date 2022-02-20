@@ -141,14 +141,7 @@ const HeadBar = () => {
 							/>
 						</svg>
 					</Typography>
-					<Typography
-						noWrap
-						variant="h6"
-						component="div"
-						sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-					>
-						Hungry?
-					</Typography>
+
 					<Search>
 						<SearchIconWrapper>
 							<SearchIcon />
