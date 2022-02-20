@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import useShoppinglist from "../../ions/store/useShoppinglist";
-import InputLabel from "@mui/material/InputLabel";
 import Button from "@mui/material/Button";
-import OutlinedInput from "@mui/material/OutlinedInput";
 import ListItem from "@mui/material/ListItem";
 import List from "@mui/material/List";
 import Input from "@mui/material/Input";
