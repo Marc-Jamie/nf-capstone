@@ -121,7 +121,7 @@ const Fridge = () => {
 						});
 				}}
 			>
-				Lets get cooking!
+				Let´s get started!
 			</Button>
 			{recipeResults?.map(result => {
 				return <RecipeCard key={result.id} recipe={result} />;
