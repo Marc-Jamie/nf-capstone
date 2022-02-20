@@ -1,6 +1,20 @@
 import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
+	palette: {
+		background: {
+			paper: "#f8f8f2",
+			default: "#F4F0BB",
+		},
+		primary: {
+			//DarkGreen
+			main: "#226F54",
+		},
+		secondary: {
+			//Beige
+			main: "#F4F0BB",
+		},
+	},
 	typography: {
 		h2: {
 			fontFamily: "fantasy",
@@ -14,10 +28,17 @@ const theme = createTheme({
 		borderRadius: 16,
 	},
 	components: {
-		MuiListItem: {
+		MuiList: {
 			styleOverrides: {
 				root: {
-					backgroundColor: "#FFFF",
+					backgroundColor: "#F4F0BB",
+				},
+			},
+		},
+		MuiOutlinedInput: {
+			styleOverrides: {
+				root: {
+					backgroundColor: "#ffffff",
 				},
 			},
 		},
@@ -29,16 +50,15 @@ const theme = createTheme({
 			},
 			styleOverrides: {
 				root: {
-					borderRadius: 0,
-					backgroundColor: "#FF00FF",
+					borderRadius: 5,
+					backgroundColor: "#226F54",
 				},
 			},
 		},
 		MuiTextField: {
 			styleOverrides: {
 				root: {
-					backgroundColor: "#00AF00",
-					color: "#FF0000",
+					backgroundColor: "#ffffff",
 				},
 			},
 		},

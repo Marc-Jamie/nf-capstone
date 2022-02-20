@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
@@ -11,6 +11,7 @@ import Collapse from "@mui/material/Collapse";
 import Link from "next/link";
 import Button from "@mui/material/Button";
 import useShoppinglist from "../ions/store/useShoppinglist";
+import Stack from "@mui/material/Stack";
 
 const RecipeCard = ({ recipe }) => {
 	const { data } = useGet(`/api/spoonacular/recipes/${recipe.id}/information`);
@@ -21,7 +22,7 @@ const RecipeCard = ({ recipe }) => {
 		setExpanded(!expanded);
 	};
 	return (
-		<Card sx={{ maxWidth: 345 }}>
+		<Card>
 			{data && (
 				<Link href={`/recipe/${recipe.id}`}>
 					<CardHeader
@@ -41,25 +42,20 @@ const RecipeCard = ({ recipe }) => {
 			</ExpandMore>
 			<Collapse unmountOnExit in={expanded} timeout="auto">
 				<CardContent>
-					{/* Test this out:
-					<Typography variant="h6" >
-					{HTMLparse(`${data.summary}`)}
-					</Typography> */}
 					{data && (
 						<Typography component="div">
-							<span dangerouslySetInnerHTML={{ __html: data.summary }} />
+							<div dangerouslySetInnerHTML={{ __html: data.summary }} />
 						</Typography>
 					)}
 				</CardContent>
 
 				{data && (
-					<div>
+					<Stack spacing={2} sx={{ m: 2 }}>
 						<Button
 							onClick={() => {
 								const listItems = data.extendedIngredients.map(ingredient => {
 									return ingredient.name;
 								});
-								console.log(listItems);
 
 								listItems.map(item => {
 									addIngredient(item);
@@ -79,7 +75,7 @@ const RecipeCard = ({ recipe }) => {
 								);
 							})}
 						</Typography>
-					</div>
+					</Stack>
 				)}
 			</Collapse>
 		</Card>
