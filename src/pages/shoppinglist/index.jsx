@@ -1,12 +1,20 @@
 import React, { useState } from "react";
 import useShoppinglist from "../../ions/store/useShoppinglist";
-import InputLabel from "@mui/material/InputLabel";
 import Button from "@mui/material/Button";
-import OutlinedInput from "@mui/material/OutlinedInput";
 import ListItem from "@mui/material/ListItem";
 import List from "@mui/material/List";
 import Input from "@mui/material/Input";
 import Checkbox from "@mui/material/Checkbox";
+import HeadBar from "../../molecules/headbar";
+import DeleteIcon from "@mui/icons-material/Delete";
+import Stack from "@mui/material/Stack";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import IconButton from "@mui/material/IconButton";
+import EditIcon from "@mui/icons-material/Edit";
+import SaveIcon from "@mui/icons-material/Save";
+import TextField from "@mui/material/TextField";
+import AddIcon from "@mui/icons-material/Add";
 
 const ShoppingList = () => {
 	const [value, setValue] = useState("");
@@ -20,87 +28,106 @@ const ShoppingList = () => {
 	const deleteCompletedIngredients = useShoppinglist(state => state.deleteCompletedIngredients);
 	return (
 		<>
-			<form
-				onSubmit={event_ => {
-					event_.preventDefault();
+			<HeadBar />
+			<Stack spacing={2} sx={{ m: 2 }}>
+				<Stack
+					sx={{ mx: 0.5 }}
+					component="form"
+					spacing={2}
+					direction="row"
+					onSubmit={event_ => {
+						event_.preventDefault();
 
-					if (value) {
-						addIngredient(value);
-						setValue("");
-					}
-				}}
-			>
-				<InputLabel htmlFor="my-input">Shopping List</InputLabel>
-				<OutlinedInput
-					placeholder="What do I need?"
-					value={value}
-					onChange={event_ => {
-						setValue(event_.target.value);
-					}}
-				/>
-				<Button type="submit">Add</Button>
-			</form>
-
-			<List dense sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
-				{ingredients.map((ingredient, index) => {
-					return (
-						<ListItem key={ingredient.id}>
-							<Checkbox
-								checked={ingredient.isChecked ? ingredient.isChecked : false}
-								onChange={() => {
-									checkIngredient(index);
-								}}
-							/>
-
-							{ingredient.edit ? (
-								<Input
-									type="text"
-									value={ingredient.editValue}
-									onChange={event_ => {
-										setEditValue(event_.target.value, index);
-									}}
-								/>
-							) : (
-								<span
-									style={
-										ingredient.isChecked
-											? { color: "green", textDecoration: "line-through" }
-											: null
-									}
-								>
-									{ingredient.name}
-								</span>
-							)}
-							<Button
-								onClick={() => {
-									if (ingredient.edit) {
-										saveEditedIngredient(index);
-									} else {
-										editIngredient(index);
-									}
-								}}
-							>
-								{ingredient.edit ? "save" : "edit"}
-							</Button>
-
-							<Button
-								onClick={() => {
-									deleteIngredient(index);
-								}}
-							>
-								delete
-							</Button>
-						</ListItem>
-					);
-				})}
-				<Button
-					onClick={() => {
-						deleteCompletedIngredients();
+						if (value) {
+							addIngredient(value);
+							setValue("");
+						}
 					}}
 				>
-					Delete All Selected items
-				</Button>
-			</List>
+					<TextField
+						variant="standard"
+						label="What do I need?"
+						value={value}
+						sx={{ backgroundColor: "background.default", flexGrow: 1 }}
+						onChange={event_ => {
+							setValue(event_.target.value);
+						}}
+					/>
+					<IconButton
+						type="submit"
+						aria-label="add"
+						edge="end"
+						sx={{ alignSelf: "center" }}
+					>
+						<AddIcon />
+					</IconButton>
+				</Stack>
+				<List>
+					{ingredients.map((ingredient, index) => {
+						return (
+							<ListItem key={ingredient.id}>
+								<ListItemIcon>
+									<Checkbox
+										edge="start"
+										checked={ingredient.isChecked ?? false}
+										onChange={() => {
+											checkIngredient(index);
+										}}
+									/>
+								</ListItemIcon>
+
+								{ingredient.edit ? (
+									<Input
+										sx={{ flexGrow: 1 }}
+										type="text"
+										value={ingredient.editValue}
+										onChange={event_ => {
+											setEditValue(event_.target.value, index);
+										}}
+									/>
+								) : (
+									<ListItemText
+										primary={ingredient.name}
+										sx={{
+											textDecoration: ingredient.isChecked
+												? "line-through"
+												: "none",
+										}}
+									/>
+								)}
+								<IconButton
+									onClick={() => {
+										if (ingredient.edit) {
+											saveEditedIngredient(index);
+										} else {
+											editIngredient(index);
+										}
+									}}
+								>
+									{ingredient.edit ? <SaveIcon /> : <EditIcon />}
+								</IconButton>
+
+								<IconButton
+									aria-label="delete"
+									edge="end"
+									onClick={() => {
+										deleteIngredient(index);
+									}}
+								>
+									<DeleteIcon />
+								</IconButton>
+							</ListItem>
+						);
+					})}
+					<Button
+						onClick={() => {
+							deleteCompletedIngredients();
+						}}
+					>
+						Delete All Selected items
+					</Button>
+				</List>
+			</Stack>
 		</>
 	);
 };

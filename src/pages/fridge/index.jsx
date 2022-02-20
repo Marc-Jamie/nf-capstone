@@ -12,6 +12,7 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import RecipeCard from "../../molecules/Card";
+import HeadBar from "../../molecules/headbar";
 const Fridge = () => {
 	// const [value, setValue] = useState("");
 	// const ingredients = useFridge(state => state.ingredients);
@@ -42,11 +43,12 @@ const Fridge = () => {
 
 	return (
 		<>
+			<HeadBar />
 			<Box
 				sx={{
 					display: "flex",
 					alignItems: "flex-start",
-					marginTop: 5,
+					marginTop: 1,
 				}}
 			>
 				<Autocomplete
@@ -54,7 +56,9 @@ const Fridge = () => {
 					inputValue={inputValue}
 					options={results}
 					sx={{ width: 300 }}
-					renderInput={params => <TextField {...params} />}
+					renderInput={params => (
+						<TextField placeholder="Whats in your fridge?" {...params} />
+					)}
 					onChange={(event, newValue) => {
 						setValueA(newValue);
 					}}
@@ -74,7 +78,7 @@ const Fridge = () => {
 				</Button>
 			</Box>
 
-			<List dense sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
+			<List dense sx={{ width: "100%", maxWidth: 360 }}>
 				{allIngredients?.map(ingredient => {
 					const labelId = `checkbox-list-secondary-label-${ingredient.indexOf}`;
 					return (
@@ -112,13 +116,12 @@ const Fridge = () => {
 						.get(
 							`/api/spoonacular-cache/recipes/findByIngredients?ingredients=${joined}&ignorePantry=true`
 						)
-						//this doesnt work yet
 						.then(response => {
 							setRecipeResults(response.data);
 						});
 				}}
 			>
-				Lets get cooking!
+				Let´s get started!
 			</Button>
 			{recipeResults?.map(result => {
 				return <RecipeCard key={result.id} recipe={result} />;
