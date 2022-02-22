@@ -12,26 +12,71 @@ import Link from "next/link";
 import Button from "@mui/material/Button";
 import useShoppinglist from "../ions/store/useShoppinglist";
 import Stack from "@mui/material/Stack";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import useFridge from "../ions/store/useFridge";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import PlaylistAddCheckCircleIcon from "@mui/icons-material/PlaylistAddCheckCircle";
+import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
+import IconButton from "@mui/material/IconButton";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
 
 const RecipeCard = ({ recipe }) => {
 	const { data } = useGet(`/api/spoonacular/recipes/${recipe.id}/information`);
 	const [expanded, setExpanded] = useState(false);
 	const addIngredient = useShoppinglist(state => state.addIngredient);
-
+	const ingredients = useFridge(state => state.ingredients);
 	const handleExpandClick = () => {
 		setExpanded(!expanded);
 	};
+
+	const Alert = React.forwardRef(function Alert(props, ref) {
+		return <MuiAlert ref={ref} elevation={6} variant="filled" {...props} />;
+	});
+
+	const [open, setOpen] = useState(false);
+	const [shopping, setShopping] = useState("Items");
+
+	const handleClick = ingredient => {
+		setOpen(true);
+		setShopping(ingredient);
+	};
+
+	const handleClose = (event, reason) => {
+		if (reason === "clickaway") {
+			return;
+		}
+		setShopping("Items");
+		setOpen(false);
+	};
+
 	return (
 		<Card>
 			{data && (
-				<Link href={`/recipe/${recipe.id}`}>
-					<CardHeader
-						title={recipe.title}
-						subheader={`ready in: ${data.readyInMinutes} minutes`}
-					/>
-				</Link>
+				<Stack>
+					<Link passHref href={`/recipe/${recipe.id}`}>
+						<a>
+							<CardMedia
+								component="img"
+								height="140"
+								image={recipe.image}
+								alt={recipe.title}
+							/>
+						</a>
+					</Link>
+					<Link passHref href={`/recipe/${recipe.id}`}>
+						<CardHeader
+							component="a"
+							title={recipe.title}
+							subheader={`ready in: ${data.readyInMinutes} minutes`}
+							sx={{ color: "currentColor", textDecoration: "none" }}
+						/>
+					</Link>
+				</Stack>
 			)}
-			<CardMedia component="img" height="140" image={recipe.image} alt={recipe.title} />
+
 			<ExpandMore
 				expand={expanded}
 				aria-expanded={expanded}
@@ -60,21 +105,54 @@ const RecipeCard = ({ recipe }) => {
 								listItems.map(item => {
 									addIngredient(item);
 								});
+								handleClick("Items");
 							}}
 						>
 							Add to shoppinglist
 						</Button>
 
-						<Typography component="ul">
-							You need:
+						<List component="ul">
+							<Typography variant="h4"> You need:</Typography>
 							{data.extendedIngredients?.map(ingredient => {
+								const yes = ingredients.some(item => item.id === ingredient.id);
 								return (
-									<Typography key={ingredient.id} component="li">
-										{ingredient.amount} {ingredient.unit} {ingredient.name}
-									</Typography>
+									<ListItem
+										key={ingredient.id}
+										component="li"
+										secondaryAction={
+											<IconButton
+												edge="end"
+												aria-label="add to shoppinglist"
+												onClick={() => {
+													addIngredient(ingredient.name);
+													handleClick(ingredient.name);
+												}}
+											>
+												<AddShoppingCartIcon />
+											</IconButton>
+										}
+									>
+										<ListItemIcon>
+											{yes ? (
+												<PlaylistAddCheckCircleIcon />
+											) : (
+												<RadioButtonUncheckedIcon />
+											)}
+										</ListItemIcon>
+										{ingredient.amount} {ingredient.unit} {ingredient.name}{" "}
+									</ListItem>
 								);
 							})}
-						</Typography>
+							<Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
+								<Alert
+									severity="success"
+									sx={{ width: "100%" }}
+									onClose={handleClose}
+								>
+									{shopping} added to shoppinglist!
+								</Alert>
+							</Snackbar>
+						</List>
 					</Stack>
 				)}
 			</Collapse>
