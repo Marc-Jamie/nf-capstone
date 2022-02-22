@@ -30,6 +30,12 @@ const useShoppinglist = create(
 							),
 						};
 					}),
+				deleteAllIngredients: () =>
+					set(() => {
+						return {
+							ingredients: [],
+						};
+					}),
 				editIngredient: index => {
 					set(
 						produce(state => {
