@@ -12,14 +12,12 @@ import ListItem from "@mui/material/ListItem";
 import Button from "@mui/material/Button";
 import uniqBy from "lodash.uniqby";
 import useShoppinglist from "../../ions/store/useShoppinglist";
-//mui table >>>>>>>
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-//>>>>>>
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandMore from "../../molecules/expand-more/styled";
 import Collapse from "@mui/material/Collapse";

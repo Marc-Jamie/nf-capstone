@@ -16,15 +16,8 @@ const theme = createTheme({
 		},
 	},
 	typography: {
-		// fontFamily: "'Caveat', sans-serif",
-		// font-family: 'Comfortaa', cursive;
-		// fontFamily: "'Josefin Sans', sans-serif",
-		// fontFamily: "'Open Sans', sans-serif",
-		// fontFamily: "'Nunito', sans-serif",
 		fontFamily: "'Comfortaa', sans-serif",
 
-		// h3: { fontFamily: "'Sansita Swashed', sans-serif" },
-		// h4: { fontFamily: "'Sansita Swashed', sans-serif" },
 		h1: { fontFamily: "'Nunito', sans-serif" },
 		h2: { fontFamily: "'Nunito', sans-serif" },
 		h3: { fontFamily: "'Nunito', sans-serif" },
@@ -45,16 +38,7 @@ const theme = createTheme({
 				},
 			},
 		},
-		MuiListItem: {
-			styleOverrides: {
-				root: {},
-			},
-		},
-		MuiList: {
-			styleOverrides: {
-				root: {},
-			},
-		},
+
 		MuiOutlinedInput: {
 			styleOverrides: {
 				root: {
