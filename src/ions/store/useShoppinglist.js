@@ -11,7 +11,7 @@ const useShoppinglist = create(
 				addIngredient: value => {
 					set(
 						produce(state => {
-							state.ingredients.push({ name: value, id: uuid() });
+							state.ingredients.unshift({ name: value, id: uuid() });
 						})
 					);
 				},

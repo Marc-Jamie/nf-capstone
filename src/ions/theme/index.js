@@ -16,25 +16,29 @@ const theme = createTheme({
 		},
 	},
 	typography: {
-		h2: {
-			fontFamily: "fantasy",
-		},
-		h3: {
-			fontFamily: "fantasy",
-			fontWeight: 700,
-		},
+		fontFamily: "'Comfortaa', sans-serif",
+
+		h1: { fontFamily: "'Nunito', sans-serif" },
+		h2: { fontFamily: "'Nunito', sans-serif" },
+		h3: { fontFamily: "'Nunito', sans-serif" },
+		h4: { fontFamily: "'Nunito', sans-serif" },
 	},
 	shape: {
 		borderRadius: 16,
 	},
 	components: {
-		MuiList: {
+		MuiCardHeader: {
 			styleOverrides: {
 				root: {
-					backgroundColor: "#F4F0BB",
+					variant: "h1",
+				},
+				title: {
+					fontFamily: "'Nunito', sans-serif",
+					fontSize: "2.5rem",
 				},
 			},
 		},
+
 		MuiOutlinedInput: {
 			styleOverrides: {
 				root: {
@@ -59,46 +63,6 @@ const theme = createTheme({
 			styleOverrides: {
 				root: {
 					backgroundColor: "#ffffff",
-				},
-			},
-		},
-		MuiCard: {
-			styleOverrides: {
-				root: {
-					// backgroundColor: "#FFFF00",
-					// color: "#000000",
-				},
-			},
-		},
-		MuiCardMedia: {
-			styleOverrides: {
-				root: {
-					borderRadius: "0 0 20px 0",
-				},
-			},
-		},
-		MuiCardHeader: {
-			styleOverrides: {
-				subheader: {
-					// backgroundColor: "#0000FF",
-					// color: "#FFFF00",
-				},
-				title: {
-					// backgroundColor: "#FF00FF",
-					// color: "#FFFF00",
-				},
-			},
-		},
-		MuiIconButton: {
-			styleOverrides: {
-				root: {
-					borderRadius: 0,
-					// backgroundColor: "#FF0000",
-					// color: "#000000",
-					// "&:hover": {
-					// 	backgroundColor: "#00FF00",
-					// 	color: "#000000",
-					//},
 				},
 			},
 		},

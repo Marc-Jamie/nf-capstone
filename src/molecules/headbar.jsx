@@ -13,15 +13,13 @@ import MenuItem from "@mui/material/MenuItem";
 import Link from "next/link";
 import axios from "axios";
 import { useDebounce } from "use-debounce";
-import RecipeCard from "./Card";
-import TextField from "@mui/material/TextField";
 import useSearch from "../ions/store/useSearch";
-import { useRouter } from "next/router";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import Paper from "@mui/material/Paper";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Avatar from "@mui/material/Avatar";
+import Stack from "@mui/material/Stack";
 
 const Search = styled("div")(({ theme }) => ({
 	position: "relative",
@@ -77,7 +75,6 @@ const HeadBar = () => {
 			axios
 				.get(`/api/spoonacular-cache/recipes/complexSearch?query=${debouncedSearch}`)
 				.then(response => {
-					console.log("1.", response.data.results);
 					setResults(response.data.results);
 				});
 		} else {
@@ -98,50 +95,88 @@ const HeadBar = () => {
 		<Box sx={{ flexGrow: 1 }}>
 			<AppBar position="static">
 				<Toolbar>
-					<div>
-						<IconButton
-							size="large"
-							edge="start"
-							color="inherit"
-							id="basic-button"
-							aria-controls={open ? "basic-menu" : undefined}
-							aria-haspopup="true"
-							aria-expanded={open ? "true" : undefined}
-							onClick={handleClick}
-						>
-							<MenuIcon />
-						</IconButton>
+					<Stack direction="row" gap={3}>
+						<div>
+							<IconButton
+								size="large"
+								edge="start"
+								color="inherit"
+								id="basic-button"
+								aria-controls={open ? "basic-menu" : undefined}
+								aria-haspopup="true"
+								aria-expanded={open ? "true" : undefined}
+								onClick={handleClick}
+							>
+								<MenuIcon />
+							</IconButton>
 
-						<Menu
-							id="basic-menu"
-							anchorEl={anchorEl}
-							open={open}
-							MenuListProps={{
-								"aria-labelledby": "basic-button",
+							<Menu
+								id="basic-menu"
+								anchorEl={anchorEl}
+								open={open}
+								MenuListProps={{
+									"aria-labelledby": "basic-button",
+								}}
+								onClose={handleClose}
+							>
+								<MenuItem onClick={handleClose}>
+									<Link passHref href="/">
+										<Typography
+											component="a"
+											sx={{ color: "currentColor", textDecoration: "none" }}
+										>
+											Home
+										</Typography>
+									</Link>
+								</MenuItem>
+								<MenuItem onClick={handleClose}>
+									<Link passHref href="/fridge">
+										<Typography
+											component="a"
+											sx={{ color: "currentColor", textDecoration: "none" }}
+										>
+											Fridge
+										</Typography>
+									</Link>
+								</MenuItem>
+								<MenuItem onClick={handleClose}>
+									<Link passHref href="/shoppinglist">
+										<Typography
+											component="a"
+											sx={{ color: "currentColor", textDecoration: "none" }}
+										>
+											Shoppinglist
+										</Typography>
+									</Link>
+								</MenuItem>
+							</Menu>
+						</div>
+						<Typography
+							variant="h6"
+							component="div"
+							sx={{
+								lineHeight: "24px",
+								display: "flex",
+								alignItems: "center",
+								m: 0,
+								gap: 0.5,
 							}}
-							onClose={handleClose}
 						>
-							<MenuItem onClick={handleClose}>
-								<Link href="/">Home</Link>
-							</MenuItem>
-							<MenuItem onClick={handleClose}>
-								<Link href="/fridge">Fridge</Link>
-							</MenuItem>
-							<MenuItem onClick={handleClose}>
-								<Link href="/shoppinglist">Shoppinglist</Link>
-							</MenuItem>
-						</Menu>
-					</div>
-					<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-						EatMe
-						<svg style={({ width: "24px" }, { height: "24px" })} viewBox="0 0 24 24">
-							<path
-								fill="currentColor"
-								d="M22 3L10 4.41V6H22V7H10V12H22C22 13.81 21.43 15.46 20.32 16.95S17.77 19.53 16 20.25V22H8V20.25C6.24 19.53 4.79 18.43 3.68 16.95S2 13.81 2 12H5V4L22 2V3M6 4.88V6H7V4.78L6 4.88M6 7V12H7V7H6M9 12V7H8V12H9M9 6V4.55L8 4.64V6H9Z"
-							/>
-						</svg>
-					</Typography>
-
+							Eat
+							<svg
+								style={({ width: "24px" }, { height: "24px" })}
+								viewBox="0 0 24 24"
+							>
+								<path
+									fill="currentColor"
+									d="M22 3L10 4.41V6H22V7H10V12H22C22 13.81 21.43 15.46 20.32 16.95S17.77 19.53 16 20.25V22H8V20.25C6.24 19.53 4.79 18.43 3.68 16.95S2 13.81 2 12H5V4L22 2V3M6 4.88V6H7V4.78L6 4.88M6 7V12H7V7H6M9 12V7H8V12H9M9 6V4.55L8 4.64V6H9Z"
+								/>
+							</svg>
+							Me
+						</Typography>
+					</Stack>
+				</Toolbar>
+				<Toolbar>
 					<Search>
 						<SearchIconWrapper>
 							<SearchIcon />
@@ -166,7 +201,7 @@ const HeadBar = () => {
 									<ListItemIcon>
 										<Avatar src={result.image} />
 									</ListItemIcon>
-									<Link href={`/recipe/${result.id}`}>
+									<Link passHref href={`/recipe/${result.id}`}>
 										<Typography>{result.title}</Typography>
 									</Link>
 								</ListItem>
