@@ -26,6 +26,8 @@ const ShoppingList = () => {
 	const saveEditedIngredient = useShoppinglist(state => state.saveEditedIngredient);
 	const checkIngredient = useShoppinglist(state => state.checkIngredient);
 	const deleteCompletedIngredients = useShoppinglist(state => state.deleteCompletedIngredients);
+	const deleteAllIngredients = useShoppinglist(state => state.deleteAllIngredients);
+
 	return (
 		<>
 			<HeadBar />
@@ -125,6 +127,13 @@ const ShoppingList = () => {
 						}}
 					>
 						Delete All Selected items
+					</Button>
+					<Button
+						onClick={() => {
+							deleteAllIngredients();
+						}}
+					>
+						Delete All items
 					</Button>
 				</List>
 			</Stack>
