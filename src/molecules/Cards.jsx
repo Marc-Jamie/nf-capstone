@@ -9,7 +9,7 @@ const RecipeReviewCard = () => {
 		// `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_SPOONACULAR_API_KEY}`
 	);
 	return (
-		<Stack spacing={2} sx={{ m: 2 }}>
+		<Stack spacing={2} sx={{ m: 2, py: 1 }}>
 			{data?.results.map(recipe => {
 				return <RecipeCard key={recipe.id} recipe={recipe} />;
 			})}

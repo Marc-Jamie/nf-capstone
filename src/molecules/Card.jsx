@@ -22,12 +22,14 @@ import IconButton from "@mui/material/IconButton";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
 const RecipeCard = ({ recipe }) => {
 	const { data } = useGet(`/api/spoonacular/recipes/${recipe.id}/information`);
 	const [expanded, setExpanded] = useState(false);
 	const addIngredient = useShoppinglist(state => state.addIngredient);
 	const ingredients = useFridge(state => state.ingredients);
+	const items = useShoppinglist(state => state.ingredients);
 	const handleExpandClick = () => {
 		setExpanded(!expanded);
 	};
@@ -112,9 +114,12 @@ const RecipeCard = ({ recipe }) => {
 						</Button>
 
 						<List component="ul">
-							<Typography variant="h4"> You need:</Typography>
+							<Typography variant="h5" sx={{ fontSize: "1.7rem" }}>
+								You need:
+							</Typography>
 							{data.extendedIngredients?.map(ingredient => {
 								const yes = ingredients.some(item => item.id === ingredient.id);
+								const oui = items.some(item => item.name === ingredient.name);
 								return (
 									<ListItem
 										key={ingredient.id}
@@ -128,7 +133,11 @@ const RecipeCard = ({ recipe }) => {
 													handleClick(ingredient.name);
 												}}
 											>
-												<AddShoppingCartIcon />
+												{oui ? (
+													<CheckCircleIcon />
+												) : (
+													<AddShoppingCartIcon />
+												)}
 											</IconButton>
 										}
 									>

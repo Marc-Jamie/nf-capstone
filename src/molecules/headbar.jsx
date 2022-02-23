@@ -3,13 +3,9 @@ import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
-import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
 import Link from "next/link";
 import axios from "axios";
 import { useDebounce } from "use-debounce";
@@ -81,115 +77,65 @@ const HeadBar = () => {
 			setResults([]);
 		}
 	}, [debouncedSearch]);
-	//Menu
-	const [anchorEl, setAnchorEl] = useState(null);
-	const open = Boolean(anchorEl);
-	const handleClick = event => {
-		setAnchorEl(event.currentTarget);
-	};
-	const handleClose = () => {
-		setAnchorEl(null);
-	};
 
 	return (
-		<Box sx={{ flexGrow: 1 }}>
-			<AppBar position="static">
+		<Box>
+			<Toolbar />
+			<AppBar position="fixed">
 				<Toolbar>
 					<Stack direction="row" gap={3}>
-						<div>
-							<IconButton
-								size="large"
-								edge="start"
-								color="inherit"
-								id="basic-button"
-								aria-controls={open ? "basic-menu" : undefined}
-								aria-haspopup="true"
-								aria-expanded={open ? "true" : undefined}
-								onClick={handleClick}
-							>
-								<MenuIcon />
-							</IconButton>
-
-							<Menu
-								id="basic-menu"
-								anchorEl={anchorEl}
-								open={open}
-								MenuListProps={{
-									"aria-labelledby": "basic-button",
-								}}
-								onClose={handleClose}
-							>
-								<MenuItem onClick={handleClose}>
-									<Link passHref href="/">
-										<Typography
-											component="a"
-											sx={{ color: "currentColor", textDecoration: "none" }}
-										>
-											Home
-										</Typography>
-									</Link>
-								</MenuItem>
-								<MenuItem onClick={handleClose}>
-									<Link passHref href="/fridge">
-										<Typography
-											component="a"
-											sx={{ color: "currentColor", textDecoration: "none" }}
-										>
-											Fridge
-										</Typography>
-									</Link>
-								</MenuItem>
-								<MenuItem onClick={handleClose}>
-									<Link passHref href="/shoppinglist">
-										<Typography
-											component="a"
-											sx={{ color: "currentColor", textDecoration: "none" }}
-										>
-											Shoppinglist
-										</Typography>
-									</Link>
-								</MenuItem>
-							</Menu>
-						</div>
-						<Typography
-							variant="h6"
-							component="div"
+						<Box
+							component="a"
+							href="#"
 							sx={{
-								lineHeight: "24px",
+								textDecoration: "none",
+								color: "currentColor",
 								display: "flex",
-								alignItems: "center",
-								m: 0,
-								gap: 0.5,
+								alignContent: "flex-end",
+							}}
+							onClick={event => {
+								event.preventDefault();
+								window.scrollTo({ top: 0, behavior: "smooth" });
 							}}
 						>
-							Eat
-							<svg
-								style={({ width: "24px" }, { height: "24px" })}
-								viewBox="0 0 24 24"
+							<Typography
+								variant="h6"
+								component="div"
+								sx={{
+									lineHeight: "24px",
+									display: "flex",
+									alignItems: "center",
+									m: 0,
+									gap: 0.5,
+								}}
 							>
-								<path
-									fill="currentColor"
-									d="M22 3L10 4.41V6H22V7H10V12H22C22 13.81 21.43 15.46 20.32 16.95S17.77 19.53 16 20.25V22H8V20.25C6.24 19.53 4.79 18.43 3.68 16.95S2 13.81 2 12H5V4L22 2V3M6 4.88V6H7V4.78L6 4.88M6 7V12H7V7H6M9 12V7H8V12H9M9 6V4.55L8 4.64V6H9Z"
-								/>
-							</svg>
-							Me
-						</Typography>
+								Eat
+								<svg
+									style={({ width: "24px" }, { height: "24px" })}
+									viewBox="0 0 24 24"
+								>
+									<path
+										fill="currentColor"
+										d="M22 3L10 4.41V6H22V7H10V12H22C22 13.81 21.43 15.46 20.32 16.95S17.77 19.53 16 20.25V22H8V20.25C6.24 19.53 4.79 18.43 3.68 16.95S2 13.81 2 12H5V4L22 2V3M6 4.88V6H7V4.78L6 4.88M6 7V12H7V7H6M9 12V7H8V12H9M9 6V4.55L8 4.64V6H9Z"
+									/>
+								</svg>
+								Me
+							</Typography>
+						</Box>
+						<Search>
+							<SearchIconWrapper>
+								<SearchIcon />
+							</SearchIconWrapper>
+							<StyledInputBase
+								placeholder="Search…"
+								inputProps={{ "aria-label": "search" }}
+								value={search}
+								onChange={event => {
+									setSearch(event.target.value);
+								}}
+							/>
+						</Search>
 					</Stack>
-				</Toolbar>
-				<Toolbar>
-					<Search>
-						<SearchIconWrapper>
-							<SearchIcon />
-						</SearchIconWrapper>
-						<StyledInputBase
-							placeholder="Search…"
-							inputProps={{ "aria-label": "search" }}
-							value={search}
-							onChange={event => {
-								setSearch(event.target.value);
-							}}
-						/>
-					</Search>
 				</Toolbar>
 			</AppBar>
 			{results.length > 0 && (
@@ -197,7 +143,12 @@ const HeadBar = () => {
 					<List sx={{ background: "none" }}>
 						{results.map(result => {
 							return (
-								<ListItem key={result.id}>
+								<ListItem
+									key={result.id}
+									onClick={() => {
+										setSearch("");
+									}}
+								>
 									<ListItemIcon>
 										<Avatar src={result.image} />
 									</ListItemIcon>

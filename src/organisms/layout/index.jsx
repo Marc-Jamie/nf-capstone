@@ -1,11 +1,13 @@
 import React from "react";
-import Footer from "../footer";
-
+import FootBar from "../../molecules/footbar";
+import HeadBar from "../../molecules/headbar";
 const Layout = ({ children }) => {
 	return (
 		<>
+			<HeadBar />
+
 			<main>{children}</main>
-			<Footer />
+			<FootBar />
 		</>
 	);
 };

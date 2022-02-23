@@ -12,22 +12,47 @@ import ListItem from "@mui/material/ListItem";
 import Button from "@mui/material/Button";
 import uniqBy from "lodash.uniqby";
 import useShoppinglist from "../../ions/store/useShoppinglist";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandMore from "../../molecules/expand-more/styled";
 import Collapse from "@mui/material/Collapse";
-import HeadBar from "../../molecules/headbar";
+import useFridge from "../../ions/store/useFridge";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import PlaylistAddCheckCircleIcon from "@mui/icons-material/PlaylistAddCheckCircle";
+import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
+import IconButton from "@mui/material/IconButton";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
+import Layout from "../../organisms/layout";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
 const Recipe = () => {
 	const addIngredient = useShoppinglist(state => state.addIngredient);
 	const [expanded, setExpanded] = useState(false);
 	const handleExpandClick = () => {
 		setExpanded(!expanded);
+	};
+	const ingredients = useFridge(state => state.ingredients);
+	const items = useShoppinglist(state => state.ingredients);
+
+	const Alert = React.forwardRef(function Alert(props, ref) {
+		return <MuiAlert ref={ref} elevation={6} variant="filled" {...props} />;
+	});
+
+	const [open, setOpen] = useState(false);
+	const [shopping, setShopping] = useState("Items");
+
+	const handleClick = ingredient => {
+		setOpen(true);
+		setShopping(ingredient);
+	};
+
+	const handleClose = (event, reason) => {
+		if (reason === "clickaway") {
+			return;
+		}
+		setShopping("Items");
+		setOpen(false);
 	};
 	const {
 		query: { id },
@@ -36,7 +61,6 @@ const Recipe = () => {
 	const { data: instructionsData } = useGet(
 		`/api/spoonacular/recipes/${id}/analyzedInstructions`
 	);
-	//mui table
 
 	const uniqueIngredients = useMemo(() => {
 		return data ? uniqBy(data.extendedIngredients, "id") : [];
@@ -46,8 +70,7 @@ const Recipe = () => {
 		return <div>loading... </div>;
 	}
 	return (
-		<>
-			<HeadBar />
+		<Layout>
 			<Stack spacing={2} sx={{ m: 2 }}>
 				<Card sx={{ bgcolor: `background.paper` }}>
 					<CardMedia component="img" image={data.image} alt={data.title} />
@@ -56,8 +79,11 @@ const Recipe = () => {
 						<Chip label={`ready in: ${data.readyInMinutes} minutes`} />
 						<Chip label={`likes: ${data.aggregateLikes} `} />
 					</Stack>
+
 					<Stack direction="row" spacing={0.5} sx={{ m: 2 }}>
-						<Typography variant="h4">Ingredients</Typography>
+						<Typography variant="h5" sx={{ fontSize: "1.7rem" }}>
+							Ingredients
+						</Typography>
 						<ExpandMore
 							expand={expanded}
 							aria-expanded={expanded}
@@ -71,44 +97,82 @@ const Recipe = () => {
 						<Stack spacing={2} sx={{ m: 2 }}>
 							<Button
 								onClick={() => {
-									const listItems = data.extendedIngredients.map(ingredient => {
+									const listItems = uniqueIngredients.map(ingredient => {
 										return ingredient.name;
 									});
 
 									listItems.map(item => {
 										addIngredient(item);
 									});
+									handleClick("Items");
 								}}
 							>
 								Add to shoppinglist
 							</Button>
-							<TableContainer component={Paper}>
-								<Table>
-									<TableBody>
-										{uniqueIngredients.map(row => (
-											<TableRow
-												key={row.id}
-												sx={{
-													"&:last-child td, &:last-child th": {
-														border: 0,
-													},
-												}}
-											>
-												<TableCell component="th" scope="row">
-													{row.name}
-												</TableCell>
-												<TableCell align="right">{row.unit}</TableCell>
-												<TableCell align="right">{row.amount}</TableCell>
-											</TableRow>
-										))}
-									</TableBody>
-								</Table>
-							</TableContainer>{" "}
+
+							<List component="ul">
+								{uniqueIngredients.map(ingredient => {
+									const yes = ingredients.some(item => item.id === ingredient.id);
+									const oui = items.some(item => item.name === ingredient.name);
+
+									return (
+										<ListItem
+											key={ingredient.id}
+											component="li"
+											secondaryAction={
+												<IconButton
+													edge="end"
+													aria-label="add to shoppinglist"
+													onClick={() => {
+														addIngredient(ingredient.name);
+														handleClick(ingredient.name);
+													}}
+												>
+													{oui ? (
+														<CheckCircleIcon />
+													) : (
+														<AddShoppingCartIcon />
+													)}
+												</IconButton>
+											}
+										>
+											<ListItemIcon>
+												{yes ? (
+													<PlaylistAddCheckCircleIcon />
+												) : (
+													<RadioButtonUncheckedIcon />
+												)}
+											</ListItemIcon>
+											{ingredient.amount} {ingredient.unit} {ingredient.name}{" "}
+										</ListItem>
+									);
+								})}
+								<Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
+									<Alert
+										severity="success"
+										sx={{ width: "100%" }}
+										onClose={handleClose}
+									>
+										{shopping} added to shoppinglist!
+									</Alert>
+								</Snackbar>
+							</List>
+							<Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
+								<Alert
+									severity="success"
+									sx={{ width: "100%" }}
+									onClose={handleClose}
+								>
+									{shopping} added to shoppinglist!
+								</Alert>
+							</Snackbar>
 						</Stack>
 					</Collapse>
 					<Stack mx={2}>
 						{instructionsData.length > 0 && (
-							<Typography variant="h4">Preparation</Typography>
+							<Typography variant="h5" sx={{ fontSize: "1.7rem" }}>
+								Preparation
+							</Typography>
 						)}
 						{instructionsData
 							.map((item, index) => ({ ...item, id: index }))
@@ -134,7 +198,7 @@ const Recipe = () => {
 					</Stack>
 				</Card>
 			</Stack>
-		</>
+		</Layout>
 	);
 };
 export default Recipe;
