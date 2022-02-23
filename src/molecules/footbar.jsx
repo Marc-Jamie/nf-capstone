@@ -9,25 +9,44 @@ import Toolbar from "@mui/material/Toolbar";
 import { useRouter } from "next/router";
 
 const FootBar = () => {
-	const router = useRouter();
+	const { asPath, push } = useRouter();
 
 	return (
 		<>
 			<Toolbar />
-			<Box sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }} elevation={3}>
-				<BottomNavigation showLabels value={router.pathname}>
-					<BottomNavigationAction value="/" href="/" label="Home" icon={<HomeIcon />} />
+			<Box
+				sx={{
+					position: "fixed",
+					bottom: 0,
+					left: 0,
+					right: 0,
+				}}
+				elevation={3}
+			>
+				<BottomNavigation showLabels value={asPath}>
+					<BottomNavigationAction
+						value="/"
+						label="Home"
+						icon={<HomeIcon />}
+						onClick={() => {
+							push("/");
+						}}
+					/>
 					<BottomNavigationAction
 						value="/fridge"
-						href="/fridge"
 						label="Fridge"
 						icon={<KitchenIcon />}
+						onClick={() => {
+							push("/fridge");
+						}}
 					/>
 					<BottomNavigationAction
 						value="/shoppinglist"
-						href="/shoppinglist"
 						label="Shoppinglist"
 						icon={<ShoppingCartIcon />}
+						onClick={() => {
+							push("/shoppinglist");
+						}}
 					/>
 				</BottomNavigation>
 			</Box>

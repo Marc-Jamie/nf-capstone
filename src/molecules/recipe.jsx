@@ -12,10 +12,10 @@ import { useParams } from "react-router-dom";
 const Recipe = () => {
 	const { id } = useParams();
 
-	const { data } = useGet(`api/spoonacular.com/recipes/${id}/information`);
+	const { data } = useGet(`/api/spoonacular/recipes/${id}/information`);
 
 	const { data: instructionsData } = useGet(
-		`api/spoonacular.com/recipes/${id}/analyzedInstructions`
+		`/api/spoonacular/recipes/${id}/analyzedInstructions`
 	);
 
 	if (!data || !instructionsData) {
