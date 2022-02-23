@@ -5,7 +5,6 @@ import ListItem from "@mui/material/ListItem";
 import List from "@mui/material/List";
 import Input from "@mui/material/Input";
 import Checkbox from "@mui/material/Checkbox";
-import HeadBar from "../../molecules/headbar";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Stack from "@mui/material/Stack";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -15,7 +14,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import SaveIcon from "@mui/icons-material/Save";
 import TextField from "@mui/material/TextField";
 import AddIcon from "@mui/icons-material/Add";
-
+import Layout from "../../organisms/layout";
 const ShoppingList = () => {
 	const [value, setValue] = useState("");
 	const ingredients = useShoppinglist(state => state.ingredients);
@@ -29,8 +28,7 @@ const ShoppingList = () => {
 	const deleteAllIngredients = useShoppinglist(state => state.deleteAllIngredients);
 
 	return (
-		<>
-			<HeadBar />
+		<Layout>
 			<Stack spacing={2} sx={{ m: 2 }}>
 				<Stack
 					sx={{ mx: 0.5 }}
@@ -121,23 +119,25 @@ const ShoppingList = () => {
 							</ListItem>
 						);
 					})}
-					<Button
-						onClick={() => {
-							deleteCompletedIngredients();
-						}}
-					>
-						Delete All Selected items
-					</Button>
-					<Button
-						onClick={() => {
-							deleteAllIngredients();
-						}}
-					>
-						Delete All items
-					</Button>
+					<Stack gap={1}>
+						<Button
+							onClick={() => {
+								deleteCompletedIngredients();
+							}}
+						>
+							Delete All Selected items
+						</Button>
+						<Button
+							onClick={() => {
+								deleteAllIngredients();
+							}}
+						>
+							Delete All items
+						</Button>
+					</Stack>
 				</List>
 			</Stack>
-		</>
+		</Layout>
 	);
 };
 export default ShoppingList;

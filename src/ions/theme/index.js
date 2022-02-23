@@ -22,11 +22,28 @@ const theme = createTheme({
 		h2: { fontFamily: "'Nunito', sans-serif" },
 		h3: { fontFamily: "'Nunito', sans-serif" },
 		h4: { fontFamily: "'Nunito', sans-serif" },
+		h5: { fontFamily: "'Nunito', sans-serif" },
+		h6: { fontFamily: "'Nunito', sans-serif" },
 	},
 	shape: {
 		borderRadius: 16,
 	},
 	components: {
+		MuiBottomNavigation: {
+			styleOverrides: {
+				root: {
+					backgroundColor: "#226F54",
+
+					"& .MuiBottomNavigationAction-root": {
+						color: "white",
+						"&.Mui-selected": {
+							background: "#87C38F",
+							color: "black",
+						},
+					},
+				},
+			},
+		},
 		MuiCardHeader: {
 			styleOverrides: {
 				root: {
@@ -34,7 +51,7 @@ const theme = createTheme({
 				},
 				title: {
 					fontFamily: "'Nunito', sans-serif",
-					fontSize: "2.5rem",
+					fontSize: "2.2rem",
 				},
 			},
 		},

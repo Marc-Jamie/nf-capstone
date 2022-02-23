@@ -11,12 +11,12 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import RecipeCard from "../../molecules/Card";
-import HeadBar from "../../molecules/headbar";
 import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Stack from "@mui/material/Stack";
 import useFridge from "../../ions/store/useFridge";
+import Layout from "../../organisms/layout";
 
 const Fridge = () => {
 	const [results, setResults] = useState([]);
@@ -41,8 +41,7 @@ const Fridge = () => {
 	}, [debouncedInputValue]);
 
 	return (
-		<>
-			<HeadBar />
+		<Layout>
 			<Stack sx={{ m: 2 }} spacing={2}>
 				<Stack sx={{ mx: 0.5 }} spacing={2} direction="row">
 					<Autocomplete
@@ -133,7 +132,7 @@ const Fridge = () => {
 					return <RecipeCard key={result.id} recipe={result} />;
 				})}
 			</Stack>
-		</>
+		</Layout>
 	);
 };
 export default Fridge;
