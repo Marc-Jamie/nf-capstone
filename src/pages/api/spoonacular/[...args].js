@@ -7,10 +7,10 @@ import { readFile, writeFile } from "fs/promises";
 
 // const REFRESH_INTERVAL = 1000 * 60 * 60 * 24 * 180;
 const cacheFile = path.join(process.cwd(), "cache.json");
-const localCache = {};
+
 const handler = async (request, response) => {
-	const cacheBuffer = process.env.NODE_ENV === "production" ? null : await readFile(cacheFile);
-	const cache = process.env.NODE_ENV === "production" ? localCache : JSON.parse(cacheBuffer);
+	const cacheBuffer = await readFile(cacheFile);
+	const cache = JSON.parse(cacheBuffer);
 	console.log(cache);
 	const { args, ...params } = request.query;
 	const id = args.join("/");
@@ -30,9 +30,7 @@ const handler = async (request, response) => {
 		const { data } = await axios.get(url, options);
 
 		cache[url] = data;
-		if (process.env.NODE_ENV === "production") {
-			writeFile(cacheFile, JSON.stringify(cache));
-		}
+		writeFile(cacheFile, JSON.stringify(cache));
 		response.status(200).json(data);
 	}
 };

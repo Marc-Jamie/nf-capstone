@@ -23,6 +23,7 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import Chip from "@mui/material/Chip";
 
 const RecipeCard = ({ recipe }) => {
 	const { data } = useGet(`/api/spoonacular/recipes/${recipe.id}/information`);
@@ -72,7 +73,7 @@ const RecipeCard = ({ recipe }) => {
 						<CardHeader
 							component="a"
 							title={recipe.title}
-							subheader={`ready in: ${data.readyInMinutes} minutes`}
+							subheader={<Chip label={`ready in: ${data.readyInMinutes} minutes`} />}
 							sx={{ color: "currentColor", textDecoration: "none" }}
 						/>
 					</Link>

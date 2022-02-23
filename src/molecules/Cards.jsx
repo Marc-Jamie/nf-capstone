@@ -4,10 +4,7 @@ import useGet from "../ions/hooks/fetch/get";
 import Stack from "@mui/material/Stack";
 
 const RecipeReviewCard = () => {
-	const { data } = useGet(
-		"/api/dummy"
-		// `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_SPOONACULAR_API_KEY}`
-	);
+	const { data } = useGet(`/api/spoonacular/recipes/complexSearch?number=5`);
 	return (
 		<Stack spacing={2} sx={{ m: 2, py: 1 }}>
 			{data?.results.map(recipe => {
