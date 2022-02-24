@@ -48,7 +48,7 @@ const ShoppingList = () => {
 						variant="standard"
 						label="What do I need?"
 						value={value}
-						sx={{ backgroundColor: "background.default", flexGrow: 1 }}
+						sx={{ backgroundColor: "background.default", flexGrow: 1, m: 2 }}
 						onChange={event_ => {
 							setValue(event_.target.value);
 						}}

@@ -42,7 +42,7 @@ const FootBar = () => {
 					/>
 					<BottomNavigationAction
 						value="/shoppinglist"
-						label="Shoppinglist"
+						label="Shopping list"
 						icon={<ShoppingCartIcon />}
 						onClick={() => {
 							push("/shoppinglist");

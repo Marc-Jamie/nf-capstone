@@ -3,15 +3,19 @@
 import axios from "axios";
 import path from "node:path";
 import process from "node:process";
-import { readFile, writeFile } from "fs/promises";
+// import { readFile, writeFile } from "fs/promises";
+import LRU from "lru-cache";
 
 // const REFRESH_INTERVAL = 1000 * 60 * 60 * 24 * 180;
-const cacheFile = path.join(process.cwd(), "cache.json");
+// const cacheFile = path.join(process.cwd(), "cache.json");
+const cache = new LRU({ ttl: 1000 * 60 * 15, max: 100 });
 
 const handler = async (request, response) => {
-	const cacheBuffer = await readFile(cacheFile);
-	const cache = JSON.parse(cacheBuffer);
-	console.log(cache);
+	// if (process.env.NODE_ENV !== "production") {
+	// 	const cacheBuffer = await readFile(cacheFile);
+	// 	const cache = JSON.parse(cacheBuffer);
+	// }
+
 	const { args, ...params } = request.query;
 	const id = args.join("/");
 	const host = "api.spoonacular.com";
@@ -21,16 +25,19 @@ const handler = async (request, response) => {
 	const options = {
 		params,
 	};
-
-	if (cache[url]) {
-		console.log(`Getting data from cache on ${new Date().toISOString()}`);
-		response.status(200).json(cache[url]);
+	const cachedValue = cache.get(url);
+	if (cachedValue) {
+		console.log("using cache");
+		response.status(200).json(cachedValue);
 	} else {
-		console.log(`Fetching new data from API on ${new Date().toISOString()}`);
+		console.log("fetching from api");
 		const { data } = await axios.get(url, options);
 
-		cache[url] = data;
-		writeFile(cacheFile, JSON.stringify(cache));
+		cache.set(url, data);
+		// if (process.env.NODE_ENV !== "production") {
+		// 	writeFile(cacheFile, JSON.stringify(cache));
+		// }
+
 		response.status(200).json(data);
 	}
 };

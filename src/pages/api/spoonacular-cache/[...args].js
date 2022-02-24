@@ -7,9 +7,7 @@ import { URLSearchParams } from "node:url";
 
 const cache = {};
 const handler = async (request, response) => {
-	console.log(cache);
 	const { args, ...params } = request.query;
-	console.log(request.query);
 	const id = args.join("/");
 	const host = "api.spoonacular.com";
 	const endpoint = path.join(host, id);
@@ -20,12 +18,9 @@ const handler = async (request, response) => {
 	};
 	const urlParams = new URLSearchParams(params).toString();
 	const key = `${url}?${urlParams}`;
-	console.log(key);
 	if (cache[key]) {
-		console.log(`Getting data from cache on ${new Date().toISOString()}`);
 		response.status(200).json(cache[key]);
 	} else {
-		console.log(`Fetching new data from API on ${new Date().toISOString()}`);
 		const { data } = await axios.get(url, options);
 
 		cache[key] = data;
