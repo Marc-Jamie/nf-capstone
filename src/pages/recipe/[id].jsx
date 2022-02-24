@@ -107,7 +107,7 @@ const Recipe = () => {
 									handleClick("Items");
 								}}
 							>
-								Add to shoppinglist
+								Add to shopping list
 							</Button>
 
 							<List component="ul">
@@ -122,7 +122,7 @@ const Recipe = () => {
 											secondaryAction={
 												<IconButton
 													edge="end"
-													aria-label="add to shoppinglist"
+													aria-label="add to shopping list"
 													onClick={() => {
 														addIngredient(ingredient.name);
 														handleClick(ingredient.name);
@@ -153,7 +153,7 @@ const Recipe = () => {
 										sx={{ width: "100%" }}
 										onClose={handleClose}
 									>
-										{shopping} added to shoppinglist!
+										{shopping} added to shopping list!
 									</Alert>
 								</Snackbar>
 							</List>
@@ -163,7 +163,7 @@ const Recipe = () => {
 									sx={{ width: "100%" }}
 									onClose={handleClose}
 								>
-									{shopping} added to shoppinglist!
+									{shopping} added to shopping list!
 								</Alert>
 							</Snackbar>
 						</Stack>
@@ -185,7 +185,6 @@ const Recipe = () => {
 												return (
 													<ListItem key={step.number}>
 														<Typography component="div">
-															{" "}
 															{step.step}
 														</Typography>
 													</ListItem>

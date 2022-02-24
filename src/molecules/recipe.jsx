@@ -21,7 +21,6 @@ const Recipe = () => {
 	if (!data || !instructionsData) {
 		return <div>loading... </div>;
 	}
-	console.log(instructionsData);
 	return (
 		<Card>
 			<CardHeader title="title" />

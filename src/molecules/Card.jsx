@@ -111,7 +111,7 @@ const RecipeCard = ({ recipe }) => {
 								handleClick("Items");
 							}}
 						>
-							Add to shoppinglist
+							Add to shopping list
 						</Button>
 
 						<List component="ul">
@@ -128,7 +128,7 @@ const RecipeCard = ({ recipe }) => {
 										secondaryAction={
 											<IconButton
 												edge="end"
-												aria-label="add to shoppinglist"
+												aria-label="add to shopping list"
 												onClick={() => {
 													addIngredient(ingredient.name);
 													handleClick(ingredient.name);
@@ -159,7 +159,7 @@ const RecipeCard = ({ recipe }) => {
 									sx={{ width: "100%" }}
 									onClose={handleClose}
 								>
-									{shopping} added to shoppinglist!
+									{shopping} added to shopping list!
 								</Alert>
 							</Snackbar>
 						</List>
