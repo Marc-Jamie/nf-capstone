@@ -1,6 +1,7 @@
 # EatMe
 
 cook with what you have
+
 ![EatMe Mockup](/public/images/EatMePurple.png)
 
 ## Demo
