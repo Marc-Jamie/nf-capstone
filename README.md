@@ -1,6 +1,8 @@
 # EatMe
 
-EatMe - your personal cooking assistant. With EatMe you can plan your meals by using the ingredients you already have at home. Simply input your ingredients, find meals based around these items and add the ingredients you are missing to your shopping list.
+EatMe - your personal cooking assistant. 
+With EatMe you can plan your meals by using the ingredients you already have at home. 
+Simply input your ingredients, find meals based around these items and add the ingredients you are missing to your shopping list.
 
 ![EatMe Mockup](/public/images/EatMePurple.png)
 
